@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Kit - Killyan Scherk</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Custom Icons (Feather Icons) -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <style>
+        /* Custom styles and theme configuration */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0A0A0A;
+            color: #E0E0E0;
+        }
+        /* Custom accent color from the media kit */
+        .accent-gold {
+            color: #FFC700;
+        }
+        .bg-accent-gold {
+            background-color: #FFC700;
+        }
+        .border-accent-gold {
+            border-color: #FFC700;
+        }
+        /* Gradient for stat cards */
+        .stat-card {
+            background: linear-gradient(145deg, #1f1f1f, #1a1a1a);
+            border: 1px solid #2a2a2a;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        /* Style for brand logos */
+        .brand-logo {
+            transition: all 0.3s ease;
+            filter: grayscale(100%);
+            opacity: 0.6;
+        }
+        .brand-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        /* Progress bar animation */
+        .progress-bar {
+            animation: progressBar 2s ease-out forwards;
+        }
+        @keyframes progressBar {
+            0% { width: 0; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+        
+        <!-- Header Section -->
+        <header class="text-center my-12 md:my-20">
+            <!-- You can replace this placeholder with your main photo URL -->
+            <img src="https://placehold.co/150x150/1a1a1a/FFC700?text=KS" alt="Killyan Scherk" class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full object-cover border-4 border-gray-800 shadow-lg">
+            <h1 class="text-4xl md:text-6xl font-extrabold mt-6">KILLYAN SCHERK</h1>
+            <p class="text-lg md:text-xl text-gray-400 mt-2 uppercase tracking-widest">Atleta & Influenciador Fitness</p>
+            <div class="mt-4 text-lg accent-gold font-semibold">@KILLYANSS</div>
+        </header>
+
+        <!-- About Me Section -->
+        <section id="sobre" class="my-16 md:my-24">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12 items-center">
+                <div class="md:col-span-2">
+                    <!-- Replace this with the URL of you holding the trophy -->
+                    <img src="https://placehold.co/600x750/1a1a1a/333333?text=Campeão+Mundial" alt="Killyan Scherk Campeão" class="rounded-2xl shadow-2xl w-full h-auto object-cover">
+                </div>
+                <div class="md:col-span-3">
+                    <h2 class="text-3xl font-bold mb-4 tracking-tight">SOBRE MIM</h2>
+                    <div class="h-1 w-20 bg-accent-gold mb-6 rounded"></div>
+                    <div class="space-y-4 text-gray-300 text-base md:text-lg leading-relaxed">
+                        <p>
+                            Meu nome é Killyan Scherk, tenho 24 anos e sou influenciador fitness, referência no fisiculturismo natural no Brasil. Defendo a ideologia 100% natural, sem o uso de anabolizantes, e compartilho minha jornada para inspirar quem busca um físico estético de forma saudável.
+                        </p>
+                        <p>
+                            Iniciei no YouTube há 8 anos com conteúdos de calistenia, tornando-me uma das maiores referências no assunto. Há 3 anos, migrei para a musculação e, desde então, conquistei 5 títulos de campeão, incluindo regional, brasileiro e mundial, me consagrando Campeão Mundial de Fisiculturismo Natural em Las Vegas na categoria Junior.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats / Numbers Section -->
+        <section id="numeros" class="my-16 md:my-24 text-center">
+             <h2 class="text-3xl font-bold mb-4 tracking-tight">MEUS NÚMEROS</h2>
+             <p class="text-gray-400 max-w-2xl mx-auto mb-12">Uma audiência engajada e em constante crescimento nas principais plataformas.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- YouTube -->
+                <div class="stat-card p-6 rounded-2xl shadow-lg transition-transform duration-300">
+                    <i data-feather="youtube" class="w-10 h-10 text-red-500 mx-auto"></i>
+                    <p class="text-5xl font-extrabold mt-4">370K</p>
+                    <p class="text-gray-400 mt-1">Inscritos no YouTube</p>
+                </div>
+                <!-- TikTok -->
+                <div class="stat-card p-6 rounded-2xl shadow-lg transition-transform duration-300">
+                    <svg class="w-10 h-10 mx-auto" fill="currentColor" viewBox="0 0 16 16" role="img" style="color:white"><path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z"/></svg>
+                    <p class="text-5xl font-extrabold mt-4">210K</p>
+                    <p class="text-gray-400 mt-1">Seguidores no TikTok</p>
+                </div>
+                <!-- Instagram -->
+                <div class="stat-card p-6 rounded-2xl shadow-lg transition-transform duration-300">
+                    <i data-feather="instagram" class="w-10 h-10 text-pink-500 mx-auto"></i>
+                    <p class="text-5xl font-extrabold mt-4">130K</p>
+                    <p class="text-gray-400 mt-1">Seguidores no Instagram</p>
+                </div>
+                <!-- Stories -->
+                <div class="stat-card p-6 rounded-2xl shadow-lg transition-transform duration-300">
+                    <i data-feather="bar-chart-2" class="w-10 h-10 text-blue-500 mx-auto"></i>
+                    <p class="text-5xl font-extrabold mt-4">5-15K</p>
+                    <p class="text-gray-400 mt-1">Média de Alcance/Stories</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Audience Demographics Section -->
+        <section id="publico" class="my-16 md:my-24">
+            <div class="text-center">
+                 <h2 class="text-3xl font-bold mb-4 tracking-tight">ALCANCE & PÚBLICO</h2>
+                 <p class="text-gray-400 max-w-3xl mx-auto mb-12">Meu público é formado por jovens que buscam um físico estético de forma natural, adotando uma rotina de treinos e alimentação equilibrada.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 p-6 md:p-8 rounded-2xl stat-card">
+                <!-- Age Demographics -->
+                <div>
+                    <h3 class="font-bold text-xl mb-6">FAIXA ETÁRIA</h3>
+                    <div class="space-y-4">
+                        <!-- 18-24 -->
+                        <div class="w-full">
+                            <div class="flex justify-between mb-1 text-sm font-medium text-gray-300">
+                                <span>18-24 anos</span>
+                                <span>35,4%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-accent-gold h-2.5 rounded-full progress-bar" style="width: 35.4%"></div>
+                            </div>
+                        </div>
+                         <!-- 25-34 -->
+                        <div class="w-full">
+                            <div class="flex justify-between mb-1 text-sm font-medium text-gray-300">
+                                <span>25-34 anos</span>
+                                <span>43,1%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-accent-gold h-2.5 rounded-full progress-bar" style="width: 43.1%"></div>
+                            </div>
+                        </div>
+                         <!-- 35-44 -->
+                        <div class="w-full">
+                            <div class="flex justify-between mb-1 text-sm font-medium text-gray-300">
+                                <span>35-44 anos</span>
+                                <span>11,3%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-accent-gold h-2.5 rounded-full progress-bar" style="width: 11.3%"></div>
+                            </div>
+                        </div>
+                        <!-- Other ages -->
+                        <div class="w-full">
+                            <div class="flex justify-between mb-1 text-sm font-medium text-gray-300">
+                                <span>Outras idades (13-17, 45+)</span>
+                                <span>10,2%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-accent-gold h-2.5 rounded-full progress-bar" style="width: 10.2%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gender Demographics -->
+                <div>
+                     <h3 class="font-bold text-xl mb-6">GÊNERO</h3>
+                     <div class="flex items-center justify-around h-full text-center">
+                         <div>
+                            <i data-feather="user" class="w-16 h-16 text-blue-400 mx-auto"></i>
+                             <p class="text-4xl font-extrabold mt-3">67,8%</p>
+                             <p class="text-gray-400">Homens</p>
+                         </div>
+                         <div>
+                             <i data-feather="user" class="w-16 h-16 text-pink-400 mx-auto"></i>
+                             <p class="text-4xl font-extrabold mt-3">32,2%</p>
+                             <p class="text-gray-400">Mulheres</p>
+                         </div>
+                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brands Section -->
+        <section id="marcas" class="my-16 md:my-24 text-center">
+            <h2 class="text-3xl font-bold mb-4 tracking-tight">MARCAS QUE CONFIAM</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto mb-12">Algumas das marcas que já colaboraram comigo em projetos de sucesso.</p>
+            <div class="flex flex-wrap justify-center items-center gap-x-10 gap-y-8 md:gap-x-16">
+                <!-- I've found placeholder logos for the brands mentioned. You can replace them with official versions if needed. -->
+                <img src="https://logodownload.org/wp-content/uploads/2019/07/nomad-logo-3.png" alt="Nomad" class="h-8 md:h-10 brand-logo">
+                <img src="https://files.maxtitanium.com.br/uploads/2022/07/logo-max-titanium-2-300x44.png" alt="Max Titanium" class="h-10 md:h-12 brand-logo">
+                <img src="https://insiderstore.com.br/cdn/shop/files/logo-insider-horizontal.png?v=1686851608&width=250" alt="Insider" class="h-8 md:h-10 brand-logo">
+                <img src="https://cdn.awsli.com.br/400x300/2503/2503845/logo/0724ee6274.png" alt="Muth" class="h-12 md:h-16 brand-logo">
+                <img src="https://cdn.awsli.com.br/2500x2500/1297/1297340/logo/63683f2a58.png" alt="Dr. Peanut" class="h-12 md:h-16 brand-logo">
+                <img src="https://www.gsuplementos.com.br/tema/growth-suplementos/img/logo.svg" alt="Growth Supplements" class="h-10 md:h-12 brand-logo">
+                <img src="https://www.manual.co/favicon/icons/manual-black.svg" alt="Manual" class="h-8 md:h-10 brand-logo">
+                <img src="https://www.armybr.com.br/wp-content/uploads/2023/07/logo-armybr-preto.png" alt="Armybr" class="h-10 md:h-12 brand-logo">
+                <img src="https://aramis.vtexassets.com/assets/vtex.file-manager-graphql/images/f3265576-928d-4a00-9e0c-829d6639d675___a0026e63283f3e1f5799763784534f46.svg" alt="APX Aramis" class="h-8 md:h-10 brand-logo">
+            </div>
+        </section>
+
+        <!-- Contact / CTA Section -->
+        <section id="contato" class="my-16 md:my-24 text-center bg-gray-900/50 py-16 px-6 rounded-2xl border border-gray-800">
+            <h2 class="text-4xl font-extrabold tracking-tight">VAMOS TRABALHAR JUNTOS!</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto mt-4 mb-8">Estou aberto a parcerias e projetos. Entre em contato para conversarmos sobre como podemos colaborar.</p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="https://wa.me/5511912862648" target="_blank" class="w-full sm:w-auto bg-accent-gold text-gray-900 font-bold py-4 px-8 rounded-xl text-lg transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-yellow-500/20">
+                    Mandar um WhatsApp
+                </a>
+                 <a href="mailto:contato@killyan.com.br" class="w-full sm:w-auto border-2 border-gray-600 text-gray-200 font-bold py-4 px-8 rounded-xl text-lg transition-transform duration-300 hover:scale-105 hover:bg-gray-800">
+                    Enviar um E-mail
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center text-gray-500 py-8 border-t border-gray-800/50">
+            <div class="flex justify-center gap-6 mb-4">
+                <a href="https://www.instagram.com/killyanss" target="_blank" class="hover:text-white"><i data-feather="instagram" class="w-6 h-6"></i></a>
+                <a href="https://www.youtube.com/@KillyanScherk" target="_blank" class="hover:text-white"><i data-feather="youtube" class="w-6 h-6"></i></a>
+                <a href="https://www.tiktok.com/@killyanss" target="_blank" class="hover:text-white">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 16 16" role="img"><path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z"/></svg>
+                </a>
+            </div>
+            <p>&copy; 2025 Killyan Scherk. Todos os direitos reservados.</p>
+            <p class="text-sm mt-1"><a href="https://killyan.com.br" target="_blank" class="hover:text-accent-gold">killyan.com.br</a></p>
+        </footer>
+
+    </div>
+    
+    <script>
+        // Initialize Feather Icons
+        feather.replace();
+    </script>
+
+</body>
+</html>
