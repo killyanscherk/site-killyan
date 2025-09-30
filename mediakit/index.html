@@ -46,12 +46,19 @@
         .brand-logo {
             transition: all 0.3s ease;
             filter: grayscale(100%);
-            opacity: 0.6;
+            opacity: 0.7;
         }
         .brand-logo:hover {
             filter: grayscale(0%);
             opacity: 1;
             transform: scale(1.1);
+        }
+        /* Invert color for dark logos on dark background */
+        .brand-logo.invert-on-dark {
+            filter: grayscale(1) invert(1);
+        }
+        .brand-logo.invert-on-dark:hover {
+            filter: grayscale(0) invert(1);
         }
         /* Progress bar animation */
         .progress-bar {
@@ -207,40 +214,40 @@
         <section id="marcas" class="my-16 md:my-24 text-center">
             <h2 class="text-3xl font-bold mb-4 tracking-tight">Marcas que confiam</h2>
             <p class="text-gray-400 max-w-2xl mx-auto mb-12">Algumas das marcas que já colaboraram comigo em projetos de sucesso.</p>
-            <div class="flex flex-wrap justify-center items-center gap-x-10 gap-y-8 md:gap-x-16">
+            <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-10 md:gap-x-16">
                 <!-- Logos customizados da pasta 'imagens' -->
                 <a href="https://www.youtube.com/watch?v=D-a-vB7l0-k" target="_blank" rel="noopener noreferrer">
-                    <img src="imagens/nomad.png" alt="Nomad" class="h-8 md:h-10 brand-logo">
+                    <img src="imagens/nomad.png" alt="Nomad" class="h-9 brand-logo">
                 </a>
                 <a href="https://www.youtube.com/watch?v=Fj-yVwVjG3o" target="_blank" rel="noopener noreferrer">
-                    <img src="imagens/max2.png" alt="Max Titanium" class="h-10 md:h-12 brand-logo">
+                    <img src="imagens/max2.png" alt="Max Titanium" class="h-12 brand-logo">
                 </a>
                 <a href="https://www.youtube.com/watch?v=g_j2cQ9wO_0" target="_blank" rel="noopener noreferrer">
-                    <img src="imagens/insider.png" alt="Insider" class="h-8 md:h-10 brand-logo">
+                    <img src="imagens/insider.png" alt="Insider" class="h-10 brand-logo invert-on-dark">
                 </a>
                 <a href="https://www.youtube.com/watch?v=wX-y59hQ3Lg" target="_blank" rel="noopener noreferrer">
-                    <img src="imagens/logo-mith.png" alt="Muth" class="h-12 md:h-16 brand-logo">
+                    <img src="imagens/logo-mith.png" alt="Mith" class="h-14 brand-logo invert-on-dark">
                 </a>
                 <a href="https://www.youtube.com/watch?v=O-5Gz4b-VSc" target="_blank" rel="noopener noreferrer">
-                    <img src="imagens/drpeanut.png" alt="Dr. Peanut" class="h-12 md:h-16 brand-logo">
+                    <img src="imagens/drpeanut.png" alt="Dr. Peanut" class="h-14 brand-logo">
                 </a>
                 <a href="https://www.youtube.com/watch?v=6J_Y_yE8gJ4" target="_blank" rel="noopener noreferrer">
-                    <img src="imagens/growth.png" alt="Growth Supplements" class="h-10 md:h-12 brand-logo">
+                    <img src="imagens/growth.png" alt="Growth Supplements" class="h-10 brand-logo">
                 </a>
                 <a href="https://www.youtube.com/watch?v=h-Q5a7pA7h4" target="_blank" rel="noopener noreferrer">
-                    <img src="imagens/manual.png" alt="Manual" class="h-8 md:h-10 brand-logo">
+                    <img src="imagens/manual.png" alt="Manual" class="h-8 brand-logo invert-on-dark">
                 </a>
                 <a href="https://www.youtube.com/watch?v=P_V5k6n9u-g" target="_blank" rel="noopener noreferrer">
-                    <img src="imagens/armybr.png" alt="Armybr" class="h-10 md:h-12 brand-logo">
+                    <img src="imagens/armybr.png" alt="Armybr" class="h-12 brand-logo invert-on-dark">
                 </a>
                 <a href="https://www.instagram.com/p/C9f3yJBOx4g/" target="_blank" rel="noopener noreferrer">
-                    <img src="imagens/apx.png" alt="APX" class="h-8 md:h-10 brand-logo">
+                    <img src="imagens/apx.png" alt="APX" class="h-8 brand-logo">
                 </a>
                 <a href="#" target="_blank" rel="noopener noreferrer">
-                    <img src="imagens/aramis.png" alt="Aramis" class="h-8 md:h-10 brand-logo">
+                    <img src="imagens/aramis.png" alt="Aramis" class="h-8 brand-logo invert-on-dark">
                 </a>
                 <a href="#" target="_blank" rel="noopener noreferrer">
-                    <img src="imagens/vane.png" alt="Vane" class="h-8 md:h-10 brand-logo">
+                    <img src="imagens/vane.png" alt="Vane" class="h-10 brand-logo invert-on-dark">
                 </a>
             </div>
         </section>
@@ -283,5 +290,6 @@
 
 </body>
 </html>
+
 
 
