@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultoria Online - Destrave Seus Resultados</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Usamos Inter como fonte principal, com fallback para fontes do sistema */
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* Efeito de gradiente sutil no botão para dar mais destaque */
+        .cta-button {
+            background-image: linear-gradient(to right, #28a745, #218838);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        /* Estilo para o plano recomendado */
+        .recommended-plan {
+            border-color: #28a745;
+            transform: scale(1.05);
+        }
+        /* Estilo para o player de vídeo */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* Proporção 16:9 */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            border-radius: 0.75rem;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        /* Estilo para o acordeão do FAQ */
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details[open] summary .arrow-down {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <!-- Seção 1: Promessa -->
+    <section id="promessa" class="py-16 sm:py-24">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight">
+                O resultado que você sempre quis, com o <span class="text-green-400">acompanhamento que você nunca teve.</span>
+            </h1>
+            <p class="mt-6 max-w-3xl mx-auto text-lg sm:text-xl text-gray-300">
+                Destrave os seus resultados com o acompanhamento de treino + dieta de um Atleta Campeão de Fisiculturismo Natural junto com um Educador Físico/Nutricionista e conquiste o shape que você sempre sonhou.
+            </p>
+            
+            <!-- VÍDEO EXPLICATIVO -->
+            <!-- Para usar: vá no YouTube > seu vídeo > Compartilhar > Incorporar > copie o código e cole aqui, substituindo o div abaixo. -->
+            <div class="video-container max-w-3xl mx-auto mt-10 shadow-lg">
+                <!-- Exemplo de como ficaria o iframe do YouTube -->
+                <!-- <iframe src="https://www.youtube.com/embed/SEU_VIDEO_ID" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+                <div class="w-full h-full flex items-center justify-center bg-gray-800 rounded-xl">
+                    <p class="text-white font-bold">[SEU VÍDEO EXPLICATIVO AQUI]</p>
+                </div>
+            </div>
+            
+            <a href="#planos" class="cta-button inline-block mt-10 text-white font-bold py-4 px-10 rounded-lg text-xl shadow-lg">
+                Quero destravar meus resultados
+            </a>
+        </div>
+    </section>
+
+    <!-- Seção 2: Depoimentos -->
+    <section id="depoimentos" class="py-16 sm:py-24 bg-gray-800">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white">Alunos que já <span class="text-green-400">destravaram</span> os seus resultados</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+                <!-- Depoimento 1 -->
+                <div class="bg-gray-900 p-6 rounded-lg shadow-md">
+                    <img src="https://placehold.co/600x600/1a202c/ffffff?text=Antes+e+Depois" alt="Foto de antes e depois do aluno 1" class="rounded-md mx-auto" onerror="this.onerror=null;this.src='https://placehold.co/600x600/1a202c/ffffff?text=Aluno+1';">
+                    <p class="mt-4 text-gray-300 italic">"Feedback incrível do aluno 1. Nunca imaginei que conseguiria chegar nesse nível, o acompanhamento foi a chave!"</p>
+                    <p class="mt-2 font-bold text-white">- Nome do Aluno</p>
+                </div>
+                <!-- Depoimento 2 -->
+                <div class="bg-gray-900 p-6 rounded-lg shadow-md">
+                    <img src="https://placehold.co/600x600/1a202c/ffffff?text=Antes+e+Depois" alt="Foto de antes e depois do aluno 2" class="rounded-md mx-auto" onerror="this.onerror=null;this.src='https://placehold.co/600x600/1a202c/ffffff?text=Aluna+2';">
+                    <p class="mt-4 text-gray-300 italic">"Feedback fantástico do aluno 2. A dieta flexível e os treinos inteligentes fizeram toda a diferença para mim."</p>
+                    <p class="mt-2 font-bold text-white">- Nome da Aluna</p>
+                </div>
+                <!-- Depoimento 3 -->
+                <div class="bg-gray-900 p-6 rounded-lg shadow-md">
+                    <img src="https://placehold.co/600x600/1a202c/ffffff?text=Antes+e+Depois" alt="Foto de antes e depois do aluno 3" class="rounded-md mx-auto" onerror="this.onerror=null;this.src='https://placehold.co/600x600/1a202c/ffffff?text=Aluno+3';">
+                    <p class="mt-4 text-gray-300 italic">"Feedback sensacional do aluno 3. O suporte diário foi essencial para me manter motivado e no caminho certo."</p>
+                    <p class="mt-2 font-bold text-white">- Nome do Aluno</p>
+                </div>
+            </div>
+            <a href="#planos" class="cta-button inline-block mt-12 text-white font-bold py-4 px-10 rounded-lg text-xl shadow-lg">
+                Quero fazer parte disso também
+            </a>
+        </div>
+    </section>
+
+    <!-- Seção 3: Biografia -->
+    <section id="biografia" class="py-16 sm:py-24">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white text-center">Quem são os <span class="text-green-400">irmãos</span> por trás da consultoria?</h2>
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <!-- Perfil 1: Atleta -->
+                <div class="text-center">
+                    <img src="https://placehold.co/600x700/1a202c/ffffff?text=Foto+do+Killyan" alt="Killyan Scherk no palco com troféu de campeão" class="rounded-lg shadow-lg mx-auto w-full max-w-md" onerror="this.onerror=null;this.src='https://placehold.co/600x700/1a202c/ffffff?text=Foto+do+Killyan';">
+                    <h3 class="mt-6 text-2xl font-bold text-white">Killyan Scherk - Atleta Campeão</h3>
+                    <p class="mt-2 text-gray-300 max-w-md mx-auto">Seu textinho aqui. Fale sobre sua jornada, a paixão pelo esporte, as competições e como a experiência prática do fisiculturismo natural te deu o conhecimento para extrair o máximo de cada aluno.</p>
+                </div>
+                <!-- Perfil 2: Nutricionista -->
+                <div class="text-center">
+                    <img src="https://placehold.co/600x700/1a202c/ffffff?text=Foto+do+Brayan" alt="Foto do Brayan de jaleco" class="rounded-lg shadow-lg mx-auto w-full max-w-md" onerror="this.onerror=null;this.src='https://placehold.co/600x700/1a202c/ffffff?text=Foto+do+Brayan';">
+                    <h3 class="mt-6 text-2xl font-bold text-white">Brayan Scherk - Educador Físico e Nutricionista</h3>
+                    <p class="mt-2 text-gray-300 max-w-md mx-auto">Textinho do Brayan. Fale sobre a formação, a base científica, a experiência clínica e como o conhecimento teórico aprofundado garante um plano seguro, eficiente e sustentável para a saúde e performance.</p>
+                </div>
+            </div>
+            <div class="mt-16 max-w-3xl mx-auto text-center bg-gray-800 p-8 rounded-lg shadow-xl">
+                <p class="text-xl font-bold text-white">"Dessa forma, unimos a <span class="text-green-400">experiência prática</span> do alto rendimento natural com a <span class="text-green-400">teoria e experiência clínica</span> de dois irmãos apaixonados por transformar físicos e vidas."</p>
+            </div>
+            <div class="text-center">
+                <a href="#planos" class="cta-button inline-block mt-12 text-white font-bold py-4 px-10 rounded-lg text-xl shadow-lg">
+                    Quero ter esse acompanhamento
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção 4: Como Funciona -->
+    <section id="como-funciona" class="py-16 sm:py-24 bg-gray-800">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white">Como vamos <span class="text-green-400">destravar</span> seus resultados</h2>
+            <div class="max-w-4xl mx-auto mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <!-- Etapa 1 -->
+                <div class="flex flex-col items-center">
+                    <div class="bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold">1</div>
+                    <h3 class="mt-4 text-xl font-bold text-white">Avaliação Inicial</h3>
+                    <p class="mt-2 text-gray-300">Análise completa do seu histórico, rotina, preferências e objetivos.</p>
+                </div>
+                <!-- Etapa 2 -->
+                <div class="flex flex-col items-center">
+                    <div class="bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold">2</div>
+                    <h3 class="mt-4 text-xl font-bold text-white">Elaboração do Protocolo</h3>
+                    <p class="mt-2 text-gray-300">Criação do seu plano de treino e dieta 100% individualizado.</p>
+                </div>
+                <!-- Etapa 3 -->
+                <div class="flex flex-col items-center">
+                    <div class="bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold">3</div>
+                    <h3 class="mt-4 text-xl font-bold text-white">Acompanhamento Diário</h3>
+                    <p class="mt-2 text-gray-300">Suporte via WhatsApp para tirar dúvidas e garantir a execução perfeita.</p>
+                </div>
+                <!-- Etapa 4 -->
+                <div class="flex flex-col items-center">
+                    <div class="bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold">4</div>
+                    <h3 class="mt-4 text-xl font-bold text-white">Reavaliações Constantes</h3>
+                    <p class="mt-2 text-gray-300">Ajustes semanais e mensais para garantir sua evolução contínua.</p>
+                </div>
+            </div>
+            <p class="mt-12 text-xl font-bold text-white">Você terá absolutamente tudo o que precisa para ter os melhores resultados possíveis.</p>
+            <a href="#planos" class="cta-button inline-block mt-8 text-white font-bold py-4 px-10 rounded-lg text-xl shadow-lg">
+                Quero destravar meus resultados
+            </a>
+        </div>
+    </section>
+
+    <!-- Seção 5: Entregáveis Empilhados -->
+    <section id="entregaveis" class="py-16 sm:py-24">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white">Tudo o que você terá <span class="text-green-400">acesso</span></h2>
+            <div class="max-w-2xl mx-auto mt-12 bg-gray-800 p-8 rounded-lg shadow-xl text-left">
+                <h3 class="text-2xl font-bold text-white mb-4">Entregáveis da Consultoria:</h3>
+                <ul class="space-y-3">
+                    <li class="flex items-start"><span class="text-green-400 mr-3">✔</span>Plano de treino periodizado e 100% individualizado.</li>
+                    <li class="flex items-start"><span class="text-green-400 mr-3">✔</span>Plano alimentar flexível e calculado para seus objetivos.</li>
+                    <li class="flex items-start"><span class="text-green-400 mr-3">✔</span>Suporte diário e direto via WhatsApp para dúvidas.</li>
+                    <li class="flex items-start"><span class="text-green-400 mr-3">✔</span>Reavaliações e ajustes semanais e mensais do protocolo.</li>
+                    <li class="flex items-start"><span class="text-green-400 mr-3">✔</span>Análise de vídeos para correção da execução dos exercícios.</li>
+                </ul>
+                <hr class="my-6 border-gray-700">
+                <h3 class="text-2xl font-bold text-white mb-4">Bônus Exclusivos:</h3>
+                <ul class="space-y-3">
+                    <li class="flex items-start"><span class="text-green-400 mr-3">✔</span>Aula: Como manter a dieta em eventos sociais sem culpa.</li>
+                    <li class="flex items-start"><span class="text-green-400 mr-3">✔</span>PDF: Guia prático de progressão de cargas para iniciantes.</li>
+                    <li class="flex items-start"><span class="text-green-400 mr-3">✔</span>PDF: Livro de receitas anabólicas, práticas e saborosas.</li>
+                </ul>
+            </div>
+            <div class="max-w-2xl mx-auto mt-8 bg-yellow-200 text-gray-900 p-6 rounded-lg shadow-xl text-center italic">
+                <p>"Uma única consulta com um bom personal ou nutricionista custa entre R$300 e R$400. Consultorias online comuns, com suporte limitado, variam de R$300 a R$500 por mês. Aqui, você tem o acompanhamento completo de DOIS especialistas pelo preço de um."</p>
+            </div>
+            <a href="#planos" class="cta-button inline-block mt-12 text-white font-bold py-4 px-10 rounded-lg text-xl shadow-lg">
+                Quero ter acesso a tudo isso
+            </a>
+        </div>
+    </section>
+
+    <!-- Seção 6: Planos -->
+    <section id="planos" class="py-16 sm:py-24 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white text-center">Escolha o plano ideal para a sua <span class="text-green-400">transformação</span></h2>
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Plano Trimestral -->
+                <div class="bg-gray-900 p-8 rounded-lg shadow-lg border-2 border-gray-700 flex flex-col">
+                    <h3 class="text-2xl font-bold text-white">Plano Trimestral</h3>
+                    <p class="mt-2 text-gray-400">O pontapé inicial para sua evolução.</p>
+                    <p class="mt-6 text-4xl font-black text-white">R$ XXX<span class="text-xl">/mês</span></p>
+                    <ul class="mt-6 space-y-3 text-gray-300 flex-grow">
+                        <li><span class="text-green-400 mr-2">✔</span>Acompanhamento por 3 meses</li>
+                        <li><span class="text-green-400 mr-2">✔</span>Garantia de 30 dias</li>
+                        <li><span class="text-green-400 mr-2">✔</span>Todos os entregáveis e bônus</li>
+                    </ul>
+                    <a href="#" class="mt-8 w-full text-center bg-gray-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-600 transition">Quero o Plano Trimestral</a>
+                </div>
+                <!-- Plano Semestral (Recomendado) -->
+                <div class="bg-gray-900 p-8 rounded-lg shadow-2xl border-2 flex flex-col recommended-plan relative">
+                    <span class="absolute top-0 -mt-4 left-1/2 -translate-x-1/2 bg-green-500 text-white text-sm font-bold px-4 py-1 rounded-full">MAIS POPULAR</span>
+                    <h3 class="text-2xl font-bold text-white">Plano Semestral</h3>
+                    <p class="mt-2 text-green-400">O melhor custo-benefício para resultados sólidos.</p>
+                    <p class="mt-6 text-4xl font-black text-white">R$ YYY<span class="text-xl">/mês</span></p>
+                    <ul class="mt-6 space-y-3 text-gray-300 flex-grow">
+                        <li><span class="text-green-400 mr-2">✔</span>Acompanhamento por 6 meses</li>
+                        <li><span class="text-green-400 mr-2">✔</span>Garantia de 60 dias</li>
+                        <li><span class="text-green-400 mr-2">✔</span>Todos os entregáveis e bônus</li>
+                        <li><span class="text-green-400 mr-2">✔</span><strong>Bônus extra: Mini-curso de técnica</strong></li>
+                    </ul>
+                    <a href="#" class="cta-button mt-8 w-full text-center text-white font-bold py-3 px-6 rounded-lg">Quero o Plano Semestral</a>
+                </div>
+                <!-- Plano Anual -->
+                <div class="bg-gray-900 p-8 rounded-lg shadow-lg border-2 border-gray-700 flex flex-col">
+                    <h3 class="text-2xl font-bold text-white">Plano Anual</h3>
+                    <p class="mt-2 text-gray-400">O compromisso definitivo com seu novo shape.</p>
+                    <p class="mt-6 text-4xl font-black text-white">R$ ZZZ<span class="text-xl">/mês</span></p>
+                    <ul class="mt-6 space-y-3 text-gray-300 flex-grow">
+                        <li><span class="text-green-400 mr-2">✔</span>Acompanhamento por 12 meses</li>
+                        <li><span class="text-green-400 mr-2">✔</span>Garantia de 90 dias</li>
+                        <li><span class="text-green-400 mr-2">✔</span>Todos os entregáveis e bônus</li>
+                        <li><span class="text-green-400 mr-2">✔</span><strong>2 videochamadas de avaliação</strong></li>
+                    </ul>
+                    <a href="#" class="mt-8 w-full text-center bg-gray-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-600 transition">Quero o Plano Anual</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção 7: Garantia -->
+    <section id="garantia" class="py-16 sm:py-24">
+        <div class="container mx-auto px-6 text-center">
+            <div class="max-w-3xl mx-auto bg-gray-800 border-2 border-dashed border-green-400 p-8 rounded-lg shadow-xl">
+                <img src="https://placehold.co/100x100/1f2937/4ade80?text=GARANTIA" alt="Selo de Garantia" class="mx-auto mb-4 rounded-full" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1f2937/4ade80?text=OK';">
+                <h2 class="text-3xl font-bold text-white">Sua Garantia Blindada de Resultados</h2>
+                <h3 class="mt-2 text-xl text-green-400 font-semibold">Seu Risco é Absolutamente ZERO</h3>
+                <p class="mt-4 text-gray-300">Nosso compromisso é com a sua evolução. Por isso, oferecemos uma garantia condicional: se você seguir o plano, se comunicar conosco e mesmo assim não obter resultados visíveis e mensuráveis em <strong>30, 60 ou 90 dias</strong> (de acordo com o seu plano), nós devolvemos 100% do seu investimento. Simples assim.</p>
+            </div>
+            <a href="#planos" class="cta-button inline-block mt-12 text-white font-bold py-4 px-10 rounded-lg text-xl shadow-lg">
+                Começar agora com Risco Zero
+            </a>
+        </div>
+    </section>
+
+    <!-- Seção 8: Perguntas Frequentes -->
+    <section id="faq" class="py-16 sm:py-24 bg-gray-800">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white text-center mb-12">Perguntas <span class="text-green-400">Frequentes</span></h2>
+            <div class="space-y-4">
+                <!-- Pergunta 1 -->
+                <details class="bg-gray-900 p-6 rounded-lg group">
+                    <summary class="font-semibold text-lg text-white cursor-pointer flex justify-between items-center">
+                        A consultoria serve para iniciantes?
+                        <span class="arrow-down transition-transform duration-300 group-open:rotate-180">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </span>
+                    </summary>
+                    <p class="mt-4 text-gray-300">Sim! O plano é 100% individualizado. Montamos o treino e a dieta exatamente para o seu nível atual, seja você um completo iniciante ou um atleta avançado buscando otimizar os resultados.</p>
+                </details>
+                <!-- Pergunta 2 -->
+                <details class="bg-gray-900 p-6 rounded-lg group">
+                    <summary class="font-semibold text-lg text-white cursor-pointer flex justify-between items-center">
+                        Preciso de uma academia completa?
+                        <span class="arrow-down transition-transform duration-300 group-open:rotate-180">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </span>
+                    </summary>
+                    <p class="mt-4 text-gray-300">Não necessariamente. Adaptamos seu treino para a estrutura que você tiver disponível, seja uma academia de condomínio, equipamentos em casa ou uma academia completa. O importante é nos informar o que você tem acesso durante a avaliação inicial.</p>
+                </details>
+                <!-- Pergunta 3 -->
+                <details class="bg-gray-900 p-6 rounded-lg group">
+                    <summary class="font-semibold text-lg text-white cursor-pointer flex justify-between items-center">
+                        Como funciona o suporte no WhatsApp?
+                        <span class="arrow-down transition-transform duration-300 group-open:rotate-180">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </span>
+                    </summary>
+                    <p class="mt-4 text-gray-300">Você terá nosso contato direto para tirar dúvidas pontuais sobre o treino, dieta ou execução de exercícios. O tempo de resposta é geralmente em poucas horas, dentro do horário comercial.</p>
+                </details>
+                <!-- Pergunta 4 -->
+                <details class="bg-gray-900 p-6 rounded-lg group">
+                    <summary class="font-semibold text-lg text-white cursor-pointer flex justify-between items-center">
+                        E se eu não gostar da dieta?
+                        <span class="arrow-down transition-transform duration-300 group-open:rotate-180">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </span>
+                    </summary>
+                    <p class="mt-4 text-gray-300">A dieta é flexível e montada com base nas suas preferências alimentares informadas na avaliação. Se algum alimento não agradar, basta nos comunicar e faremos a substituição para garantir que você consiga seguir o plano com prazer.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção 9: Contato -->
+    <footer id="contato" class="py-16">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold text-white">Ainda tem alguma dúvida?</h2>
+            <p class="mt-4 max-w-xl mx-auto text-lg text-gray-300">Nossa equipe está pronta para te ajudar. Clique no botão abaixo e fale diretamente com a gente no WhatsApp.</p>
+            
+            <!-- CONTATO WHATSAPP -->
+            <!-- Substitua "55SEUNUMERO" pelo seu número completo (Ex: 5511999998888) -->
+            <a href="https://wa.me/55SEUNUMERO?text=Olá!%20Vi%20a%20página%20de%20vendas%20e%20tenho%20uma%20dúvida%20sobre%20a%20consultoria." 
+               target="_blank" 
+               class="cta-button inline-flex items-center mt-8 text-white font-bold py-4 px-10 rounded-lg text-xl shadow-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                Fale com a gente no WhatsApp
+            </a>
+        </div>
+        <div class="text-center text-gray-500 mt-12 text-sm">
+            <p>&copy; 2025 Killyan Scherk & Brayan Scherk. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
