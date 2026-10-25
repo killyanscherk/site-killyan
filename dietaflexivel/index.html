@@ -2,430 +2,350 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#080808">
-<meta
-  name="description"
-  content="Calculadora de substituição de alimentos da Scherk Consultoria."
->
 <title>Substituição de Alimentos • Scherk Consultoria</title>
 
+<script>
+(function () {
+  let saved = null;
+  try {
+    saved = localStorage.getItem("scherk-theme");
+  } catch (e) {}
+
+  const dark = window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  document.documentElement.dataset.theme =
+    saved === "light" || saved === "dark"
+      ? saved
+      : dark ? "dark" : "light";
+})();
+</script>
+
 <style>
-  :root {
-    --ink: #1c1c1c;
-    --muted: #727272;
-    --line: #e6e3da;
-    --yellow: #e7ba2c;
-    --soft-yellow: #fff6d9;
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-
-  body {
-    margin: 0;
-    background: #faf9f6;
-    color: var(--ink);
-    font: 16px system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  }
-
-  /* Cabeçalho */
-  .site-header {
-    padding: 20px 22px;
-    background: #080808;
-    border-bottom: 2px solid #d6a81f;
-  }
-
-  .header-inner {
-    max-width: 1100px;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-  }
-
-  .header-tag {
-    color: #d6bc70;
-    font-size: 10px;
-    letter-spacing: 2px;
-  }
-
-  /*
-   * A janela esconde apenas as margens externas da imagem.
-   * height:auto preserva a proporção do logo original.
-   */
-  .brand {
-    position: relative;
-    width: 240px;
-    height: 76px;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-
-  .brand-original {
-    position: absolute;
-    display: block;
-    width: 450px;
-    max-width: none;
-    height: auto;
-    left: -105px;
-    top: -90px;
-    filter: url(#logo-transparente);
-  }
-
-  main {
-    max-width: 1100px;
-    margin: auto;
-    padding: 44px 22px;
-  }
-
-  .eyebrow {
-    color: #8a6912;
-    font-size: 11px;
-    font-weight: 750;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
-
-  h1 {
-    max-width: 730px;
-    margin: 15px 0 20px;
-    font-size: clamp(36px, 6vw, 64px);
-    line-height: 1.04;
-    letter-spacing: -2.5px;
-  }
-
-  .intro {
-    max-width: 560px;
-    color: var(--muted);
-    line-height: 1.7;
-  }
-
-  .layout {
-    display: grid;
-    gap: 25px;
-    margin-top: 35px;
-    align-items: start;
-  }
-
-  .panel {
-    padding: 25px;
-    background: white;
-    border: 1px solid var(--line);
-    border-radius: 22px;
-    box-shadow: 0 10px 35px #30270c05;
-  }
-
-  .step {
-    margin-bottom: 22px;
-    color: var(--muted);
-    font-size: 12px;
-  }
-
-  label {
-    display: block;
-    margin: 20px 0 9px;
-    font-size: 14px;
-    font-weight: 650;
-  }
-
-  input,
-  select,
-  button {
-    font: inherit;
-  }
-
-  input,
-  select {
-    width: 100%;
-    min-height: 50px;
-    padding: 15px;
-    background: white;
-    color: var(--ink);
-    border: 1px solid #cfcac0;
-    border-radius: 10px;
-  }
-
-  input:focus,
-  select:focus {
-    outline: 3px solid var(--yellow);
-  }
-
-  button {
-    min-height: 48px;
-    padding: 13px 18px;
-    background: var(--yellow);
-    color: #171717;
-    border: 0;
-    border-radius: 10px;
-    font-weight: 650;
-    cursor: pointer;
-  }
-
-  button:focus-visible {
-    outline: 3px solid #b38a12;
-    outline-offset: 3px;
-  }
-
-  .primary {
-    width: 100%;
-    margin-top: 23px;
-    box-shadow: 0 5px 15px #c39c2222;
-  }
-
-  .primary:hover {
-    background: #f0c83f;
-  }
-
-  .hint {
-    color: var(--muted);
-    font-size: 12px;
-    line-height: 1.6;
-  }
-
-  #choices {
-    display: none;
-    max-height: 265px;
-    margin-top: 5px;
-    overflow: auto;
-    border: 1px solid var(--line);
-    border-radius: 10px;
-  }
-
-  #choices button {
-    display: block;
-    width: 100%;
-    background: white;
-    border-bottom: 1px solid var(--line);
-    border-radius: 0;
-    text-align: left;
-    font-size: 14px;
-    font-weight: 450;
-  }
-
-  #choices button:hover,
-  #choices button:focus {
-    background: var(--soft-yellow);
-  }
-
-  .quantity {
-    display: grid;
-    grid-template-columns: 1fr 85px;
-    gap: 10px;
-  }
-
-  .unit {
-    padding: 15px;
-    color: var(--muted);
-    border: 1px solid var(--line);
-    border-radius: 10px;
-  }
-
-  #error {
-    color: #9d3327;
-    font-size: 14px;
-    line-height: 1.5;
-  }
-
-  #original {
-    margin-top: 22px;
-    padding: 20px;
-    background: var(--soft-yellow);
-    border-radius: 14px;
-  }
-
-  h2 {
-    margin: 0 0 8px;
-    font-size: 23px;
-    letter-spacing: -.6px;
-  }
-
-  h3 {
-    margin: 10px 0;
-    font-size: 16px;
-    line-height: 1.45;
-  }
-
-  .stats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 5px;
-    margin-top: 18px;
-  }
-
-  .stats span {
-    display: block;
-    margin-top: 5px;
-    color: var(--muted);
-    font-size: 10px;
-  }
-
-  .stats b {
-    font-size: 14px;
-    font-weight: 650;
-  }
-
-  .kcal {
-    font-size: 28px;
-    font-weight: 700;
-    letter-spacing: -1px;
-  }
-
-  .filters {
-    display: grid;
-    gap: 10px;
-    margin: 20px 0;
-  }
-
-  .filters select {
-    font-size: 14px;
-  }
-
-  .card {
-    margin: 12px 0;
-    padding: 23px;
-    background: white;
-    border: 1px solid var(--line);
-    border-radius: 17px;
-  }
-
-  .cardtop {
-    display: flex;
-    align-items: start;
-    justify-content: space-between;
-    gap: 12px;
-  }
-
-  .badge {
-    padding: 6px 9px;
-    background: var(--soft-yellow);
-    color: #765b16;
-    border-radius: 20px;
-    font-size: 10px;
-    white-space: nowrap;
-  }
-
-  .grams {
-    font-size: 29px;
-    font-weight: 700;
-    letter-spacing: -1px;
-  }
-
-  .energy {
-    color: var(--muted);
-    font-size: 14px;
-  }
-
-  .diff {
-    margin-top: 18px;
-    color: #765b16;
-    font-size: 12px;
-  }
-
-  .empty {
-    margin-top: 20px;
-    padding: 40px 24px;
-    color: var(--muted);
-    border: 1px dashed #d0c6ac;
-    border-radius: 20px;
-    line-height: 1.7;
-  }
-
-  .empty strong {
-    display: block;
-    margin-bottom: 10px;
-    color: var(--ink);
-    font-size: 23px;
-  }
-
-  #more {
-    width: 100%;
-    margin-top: 10px;
-    background: #f4e9c8;
-  }
-
-  footer {
-    margin-top: 45px;
-    padding-top: 24px;
-    color: var(--muted);
-    border-top: 1px solid var(--line);
-    font-size: 12px;
-    line-height: 1.8;
-  }
-
-  a {
-    color: inherit;
-  }
-
-  details {
-    margin-top: 15px;
-  }
-
-  summary {
-    font-weight: 650;
-    cursor: pointer;
-  }
-
-  [hidden] {
-    display: none !important;
-  }
-
-  @media (min-width: 800px) {
-    .layout {
-      grid-template-columns: 380px 1fr;
-      gap: 36px;
-    }
-
-    .panel {
-      position: sticky;
-      top: 20px;
-    }
-
-    .filters {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-
-  @media (max-width: 450px) {
-    .site-header {
-      padding: 17px 22px;
-    }
-
-    .brand {
-      width: 200px;
-      height: 64px;
-    }
-
-    .brand-original {
-      width: 375px;
-      left: -87.5px;
-      top: -75px;
-    }
-
-    .header-tag {
-      display: none;
-    }
-
-    main {
-      padding-top: 30px;
-    }
-
-    .panel {
-      padding: 21px;
-    }
-
-    .stats b {
-      font-size: 12px;
-    }
-  }
+:root {
+  color-scheme: light;
+  --page: #faf9f6;
+  --surface: #fff;
+  --ink: #1c1c1c;
+  --muted: #727272;
+  --line: #e6e3da;
+  --yellow: #e7ba2c;
+  --soft: #fff6d9;
+  --accent: #806214;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #131313;
+  --surface: #202020;
+  --ink: #f4f2ed;
+  --muted: #bdb8ad;
+  --line: #3d3930;
+  --soft: #352d19;
+  --accent: #f0cc67;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font: 16px system-ui, -apple-system, sans-serif;
+}
+.site-header {
+  padding: 20px 22px;
+  background: #080808;
+  border-bottom: 2px solid #d6a81f;
+}
+.header-inner {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.brand {
+  position: relative;
+  width: 240px;
+  height: 76px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.brand-original {
+  position: absolute;
+  display: block;
+  width: 450px;
+  max-width: none;
+  height: auto;
+  left: -105px;
+  top: -90px;
+  filter: url(#logo-transparente);
+}
+.brand-fallback {
+  color: #e7ba2c;
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  line-height: 1.25;
+}
+.brand-fallback small {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 4px;
+}
+.header-tag {
+  color: #d6bc70;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+button, input, select { font: inherit; }
+button {
+  min-height: 48px;
+  padding: 13px 18px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--yellow);
+  color: #171717;
+  font-weight: 650;
+  cursor: pointer;
+}
+button:focus-visible {
+  outline: 3px solid #b38a12;
+  outline-offset: 3px;
+}
+#themeToggle {
+  margin-left: auto;
+  padding: 10px 14px;
+  background: #232323;
+  color: #f0cc67;
+  border: 1px solid #53492d;
+  font-size: 12px;
+  white-space: nowrap;
+}
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 44px 22px;
+}
+.eyebrow {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+h1 {
+  max-width: 730px;
+  margin: 15px 0 20px;
+  font-size: clamp(36px,6vw,64px);
+  line-height: 1.04;
+  letter-spacing: -2.5px;
+}
+.intro {
+  max-width: 560px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.layout {
+  display: grid;
+  gap: 25px;
+  margin-top: 35px;
+  align-items: start;
+}
+.panel {
+  padding: 25px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--surface);
+}
+.step {
+  margin-bottom: 22px;
+  color: var(--muted);
+  font-size: 12px;
+}
+label {
+  display: block;
+  margin: 20px 0 9px;
+  font-size: 14px;
+  font-weight: 650;
+}
+input, select {
+  width: 100%;
+  min-height: 50px;
+  padding: 15px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--ink);
+}
+input:focus, select:focus {
+  outline: 3px solid var(--yellow);
+}
+.primary {
+  width: 100%;
+  margin-top: 23px;
+}
+.primary:hover { background: #f0c83f; }
+.hint {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+#choices {
+  display: none;
+  max-height: 265px;
+  margin-top: 5px;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+#choices button {
+  display: block;
+  width: 100%;
+  background: var(--surface);
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 450;
+}
+#choices button:hover, #choices button:focus {
+  background: var(--soft);
+}
+.quantity {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) 90px;
+  gap: 10px;
+}
+.quantity select { padding: 12px; }
+#error {
+  color: #d56855;
+  font-size: 14px;
+  line-height: 1.5;
+}
+#original {
+  margin-top: 22px;
+  padding: 20px;
+  background: var(--soft);
+  border-radius: 14px;
+}
+h2 {
+  margin: 0 0 8px;
+  font-size: 23px;
+  letter-spacing: -.6px;
+}
+h3 {
+  margin: 10px 0;
+  font-size: 16px;
+  line-height: 1.45;
+}
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 5px;
+  margin-top: 18px;
+}
+.stats span {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 10px;
+}
+.stats b { font-size: 14px; font-weight: 650; }
+.kcal { font-size: 28px; font-weight: 700; }
+.filters {
+  display: grid;
+  gap: 10px;
+  margin: 20px 0;
+}
+.filters select { font-size: 14px; }
+#resultUnit { grid-column: 1/-1; }
+.card {
+  margin: 12px 0;
+  padding: 23px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 17px;
+}
+.cardtop {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.badge {
+  padding: 6px 9px;
+  background: var(--soft);
+  color: var(--accent);
+  border-radius: 20px;
+  font-size: 10px;
+  white-space: nowrap;
+}
+.grams {
+  font-size: 29px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+.energy { color: var(--muted); font-size: 14px; }
+.diff {
+  margin-top: 18px;
+  color: var(--accent);
+  font-size: 12px;
+}
+.empty {
+  margin-top: 20px;
+  padding: 40px 24px;
+  color: var(--muted);
+  border: 1px dashed var(--line);
+  border-radius: 20px;
+  line-height: 1.7;
+}
+.empty strong {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--ink);
+  font-size: 23px;
+}
+#more {
+  width: 100%;
+  margin-top: 10px;
+  background: var(--soft);
+  color: var(--ink);
+}
+footer {
+  margin-top: 45px;
+  padding-top: 24px;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  line-height: 1.8;
+}
+a { color: inherit; }
+details { margin-top: 15px; }
+summary { cursor: pointer; font-weight: 650; }
+[hidden] { display: none !important; }
+@media(min-width:800px) {
+  .layout { grid-template-columns: 380px 1fr; gap: 36px; }
+  .panel { position: sticky; top: 20px; }
+  .filters { grid-template-columns: 1fr 1fr; }
+}
+@media(max-width:450px) {
+  .site-header { padding: 17px 22px; }
+  .header-inner { gap: 12px; }
+  .brand { width: 185px; height: 61px; }
+  .brand-original { width: 347px; left: -81px; top: -69px; }
+  .header-tag, .theme-label { display: none; }
+  #themeToggle { min-width: 48px; padding: 8px; font-size: 21px; }
+  main { padding-top: 30px; }
+  .panel { padding: 21px; }
+  .stats b { font-size: 12px; }
+}
 </style>
 </head>
 
 <body>
-
-<!-- Remove visualmente o fundo neutro escuro do logo original. -->
 <svg
   xmlns="http://www.w3.org/2000/svg"
   width="0"
@@ -434,10 +354,7 @@
   style="position:absolute;pointer-events:none"
 >
   <defs>
-    <filter
-      id="logo-transparente"
-      color-interpolation-filters="sRGB"
-    >
+    <filter id="logo-transparente" color-interpolation-filters="sRGB">
       <feColorMatrix
         type="matrix"
         values="
@@ -453,28 +370,29 @@
 
 <header class="site-header">
   <div class="header-inner">
-    <div class="brand">
+    <div class="brand" id="brand">
       <img
+        id="logo"
         class="brand-original"
         src="./logo.jpeg"
         alt="Scherk Consultoria"
       >
     </div>
 
-    <span class="header-tag">
-      NUTRIÇÃO COM FLEXIBILIDADE
-    </span>
+    <button
+      id="themeToggle"
+      type="button"
+      aria-label="Ativar tema escuro"
+      aria-pressed="false"
+    >☾ <span class="theme-label">Tema escuro</span></button>
+
+    <span class="header-tag">NUTRIÇÃO COM FLEXIBILIDADE</span>
   </div>
 </header>
 
 <main>
   <div class="eyebrow">Sua dieta, mais possibilidades</div>
-
-  <h1>
-    Troque o alimento.<br>
-    Mantenha o equilíbrio.
-  </h1>
-
+  <h1>Troque o alimento.<br>Mantenha o equilíbrio.</h1>
   <p class="intro">
     Encontre substituições com calorias equivalentes e compare os nutrientes.
     Mais liberdade para seguir o seu plano.
@@ -485,10 +403,7 @@
       <div class="step">01 / ESCOLHA SEU ALIMENTO</div>
 
       <form id="form" novalidate>
-        <label for="search">
-          Qual alimento você gostaria de substituir?
-        </label>
-
+        <label for="search">Qual alimento você gostaria de substituir?</label>
         <input
           id="search"
           type="search"
@@ -497,15 +412,13 @@
           aria-controls="choices"
           aria-expanded="false"
         >
-
         <div id="choices" aria-label="Alimentos encontrados"></div>
-
-        <p class="hint" id="selection">
-          597 alimentos da TACO. Selecione o preparo correto.
+        <p id="selection" class="hint">
+          602 alimentos · TACO + 5 complementos TBCA.
+          Selecione o preparo correto.
         </p>
 
         <label for="quantity">Quantidade</label>
-
         <div class="quantity">
           <input
             id="quantity"
@@ -514,17 +427,16 @@
             value="100"
             aria-describedby="quantityHint"
           >
-          <div class="unit">g</div>
+          <select id="unit" aria-label="Unidade da quantidade">
+            <option value="g">g</option>
+            <option value="ml" disabled>mL</option>
+          </select>
         </div>
 
-        <p id="quantityHint" class="hint">
-          De 1 a 2.000 g · peso da parte comestível.
-        </p>
-
+        <p id="quantityHint" class="hint"></p>
         <button class="primary" type="submit">
           Encontrar substituições ↗
         </button>
-
         <p id="error" role="alert"></p>
       </form>
 
@@ -533,15 +445,19 @@
 
     <section aria-label="Substituições">
       <div class="step">02 / EXPLORE SUAS OPÇÕES</div>
-
       <h2>Uma nova opção para sua dieta</h2>
-
       <p class="hint">
-        Equivalência de calorias primeiro. Compatibilidade alimentar
-        e macronutrientes em seguida.
+        Equivalência de calorias primeiro.
+        Compatibilidade alimentar e macronutrientes em seguida.
       </p>
 
       <div id="filters" class="filters" hidden>
+        <select id="resultUnit" aria-label="Unidade dos resultados">
+          <option value="auto">Unidade dos resultados: automática</option>
+          <option value="g">Resultados em gramas</option>
+          <option value="ml">mL quando disponível</option>
+        </select>
+
         <select id="category" aria-label="Categoria">
           <option value="compatible">Categorias compatíveis</option>
           <option value="same">Mesma categoria</option>
@@ -555,12 +471,7 @@
         </select>
       </div>
 
-      <p
-        id="count"
-        class="hint"
-        role="status"
-        aria-live="polite"
-      ></p>
+      <p id="count" class="hint" role="status" aria-live="polite"></p>
 
       <div id="results">
         <div class="empty">
@@ -570,79 +481,81 @@
         </div>
       </div>
 
-      <button id="more" type="button" hidden>
-        Mostrar mais opções
-      </button>
+      <button id="more" type="button" hidden>Mostrar mais opções</button>
     </section>
   </div>
 
   <footer>
-    <strong>Fonte nutricional principal:</strong>
-
+    <strong>Fonte principal:</strong>
     <a
       href="https://nepa.unicamp.br/wp-content/uploads/sites/27/2023/10/taco_4_edicao_ampliada_e_revisada.pdf"
       target="_blank"
       rel="noopener"
-    >
-      TACO — Tabela Brasileira de Composição de Alimentos,
-      4ª edição revisada e ampliada — NEPA/UNICAMP (2011).
-    </a>
-
+    >TACO — 4ª edição revisada e ampliada — NEPA/UNICAMP (2011).</a>
     597 alimentos; valores por 100 g da parte comestível.
 
     <p>
-      Os valores são estimativas e podem variar conforme marca, preparo
-      e variedade. Ferramenta educativa de apoio à orientação da
-      Scherk Consultoria. Equivalência calórica não significa
+      Fonte complementar:
+      <a href="https://www.tbca.net.br/" target="_blank" rel="noopener">
+        TBCA — USP/FoRC
+      </a>.
+      Cinco registros complementares identificados individualmente.
+      Esta ferramenta não contém a base TBCA inteira.
+      O campo carboidratos utiliza carboidrato total.
+    </p>
+
+    <p>
+      Conversões de volume:
+      <a
+        href="https://www.fao.org/fileadmin/templates/food_composition/documents/density_DB_v2_0_01.pdf"
+        target="_blank"
+        rel="noopener"
+      >FAO/INFOODS Density Database v2.0</a>.
+      Mililitros são disponibilizados apenas quando há densidade cadastrada.
+    </p>
+
+    <p>
+      Os valores são estimativas e podem variar conforme marca, preparo,
+      variedade e temperatura. Ferramenta educativa de apoio à orientação
+      da Scherk Consultoria. Equivalência calórica não significa
       equivalência completa de nutrientes.
     </p>
 
     <details>
       <summary>Como os resultados são calculados</summary>
-
       <p>
         A porção substituta é calculada a partir das calorias da porção
-        original. Arredondamos para gramas inteiros quando o erro é de
-        até 1%; se necessário, usamos 0,5 ou 0,1 g. Opções com erro
-        superior a 2% ou porções fora de 1–2.000 g são omitidas.
+        original. O arredondamento usa unidades inteiras, 0,5 ou 0,1,
+        buscando erro de até 1%. Opções com diferença superior a 2%
+        ou peso fora de 1–2.000 g são omitidas.
       </p>
-
       <p>
         Categorias compatíveis e estado de preparo têm prioridade sobre
-        a similaridade de proteínas, carboidratos e gorduras. As
-        categorias de compatibilidade são regras desta ferramenta,
-        não classificações clínicas da TACO. Filtros nutricionais
-        ordenam porções já equivalentes.
+        a similaridade de proteínas, carboidratos e gorduras. As categorias
+        de compatibilidade são regras da ferramenta, não classificações
+        clínicas das bases.
       </p>
-
       <p>
         “Tr” significa traços; “NA”, não aplicável; “—”, dado ausente.
-        Marcadores não são convertidos em nutrientes inventados.
-        A similaridade usa apenas os macronutrientes numéricos
-        disponíveis; dados incompletos são sinalizados.
+        A similaridade compara somente macros com valores numéricos
+        disponíveis. Dados incompletos são sinalizados.
       </p>
-
       <p>
-        Confira sempre o preparo e pese a opção exatamente como descrita.
-        Não há conversão para unidades, colheres ou mililitros.
+        Para converter volume em peso, usamos:
+        gramas = mililitros × densidade em g/mL.
+        Confira o preparo e pese o alimento exatamente como descrito.
+        Não há conversão para unidades ou colheres.
       </p>
     </details>
   </footer>
 </main>
 
 <!--
-  COLE A LISTA DOS 597 ALIMENTOS DENTRO DO BLOCO ABAIXO.
-
-  Copie somente as linhas dos alimentos do código anterior,
-  começando em 1|Arroz... e terminando em 597|Noz...
-
-  Não copie as tags <script> do bloco anterior.
-
-  Formato:
-  id|nome|grupo|kcal|proteína|carboidratos|gorduras|fibras
+id|nome|grupo|kcal|proteína|carboidratos|gorduras|fibras|fonte|código
+Os 597 primeiros registros são da TACO.
+As duas últimas colunas são opcionais para os registros TACO.
 -->
 <script id="food-data" type="text/plain">
-
 1|Arroz, integral, cozido|0|124|2.6|25.8|1|2.7
 2|Arroz, integral, cru|0|360|7.3|77.5|1.9|4.8
 3|Arroz, tipo 1, cozido|0|128|2.5|28.1|0.2|1.6
@@ -1240,15 +1153,23 @@
 595|Pinhão, cozido|14|174|3|43.9|0.7|15.6
 596|Pupunha, cozida|14|219|2.5|29.6|12.8|4.3
 597|Noz, crua|14|620|14|18.4|59.4|7.2
-
+598|Pasta de amendoim, integral|13|615|26.5|21.6|48.4|6.5|TBCA|BRC0290T
+599|Chia, semente, seca (dado importado)|0|442|16.5|42.1|30.7|34.4|TBCA|BRC0402A
+600|Quinoa, grão, cozida, sem óleo, sem sal (dado importado)|0|114|4.4|21.3|1.92|2.8|TBCA|BRC0399A
+601|Leite, vaca, integral, fluído, UHT, Brasil (média de diferentes amostras)|6|65|2.35|7.16|3.04|0|TBCA|BRC0044G
+602|Leite, vaca, desnatado, UHT, Vigor, Brasil|6|38|2.98|5.95|0.36|0|TBCA|BRC0070G
 </script>
 
 <script>
 "use strict";
 
 // ============================================================
-// 1. BANCO NUTRICIONAL
+// BANCO NUTRICIONAL E FUNÇÕES BÁSICAS
 // ============================================================
+
+const $ = id => document.getElementById(id);
+const numeric = value =>
+  typeof value === "number" && Number.isFinite(value);
 
 const GROUPS = [
   "Cereais e derivados",
@@ -1268,50 +1189,20 @@ const GROUPS = [
   "Nozes e sementes"
 ];
 
-const $ = id => document.getElementById(id);
-
-const numeric = value =>
-  typeof value === "number" && Number.isFinite(value);
-
 function parseValue(value) {
   const text = (value || "").trim();
-
   if (!text) return null;
-  if (text === "Tr" || text === "NA") return text;
-
+  if (/^tr$/i.test(text)) return "Tr";
+  if (/^na$/i.test(text)) return "NA";
   const number = Number(text.replace(",", "."));
-
   return Number.isFinite(number) ? number : null;
 }
 
-const dataLines = $("food-data")
-  .textContent
-  .trim()
-  .split(/\r?\n/)
-  .map(line => line.trim())
-  .filter(Boolean);
-
-const FOODS = dataLines
-  .filter(line => /^\d+\|/.test(line))
-  .map(line => {
-    const [id, name, group, kcal, p, c, f, fiber] = line.split("|");
-
-    return {
-      id: Number(id),
-      name: (name || "").trim(),
-      group: GROUPS[Number(group)] || "Outros",
-      kcal: parseValue(kcal),
-      p: parseValue(p),
-      c: parseValue(c),
-      f: parseValue(f),
-      fiber: parseValue(fiber),
-      source: "TACO 4ª edição / NEPA–UNICAMP"
-    };
-  });
-
-const baseValid =
-  FOODS.length === 597 &&
-  new Set(FOODS.map(food => food.id)).size === 597;
+function norm(text) {
+  return text.normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+}
 
 function fmt(number, digits = 1) {
   return number.toLocaleString("pt-BR", {
@@ -1319,52 +1210,70 @@ function fmt(number, digits = 1) {
   });
 }
 
-// ============================================================
-// 2. BUSCA E CLASSIFICAÇÃO
-// ============================================================
-
-function norm(text) {
-  return text
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase();
+function esc(value) {
+  return String(value).replace(/[&<>"']/g, character => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  }[character]));
 }
+
+const FOODS = $("food-data").textContent.trim().split(/\r?\n/)
+  .filter(line => /^\d+\|/.test(line.trim()))
+  .map(line => {
+    const [id, name, group, kcal, p, c, f, fiber, source, code] =
+      line.trim().split("|");
+
+    return {
+      id: Number(id),
+      name: name.trim(),
+      group: GROUPS[Number(group)],
+      kcal: parseValue(kcal),
+      p: parseValue(p),
+      c: parseValue(c),
+      f: parseValue(f),
+      fiber: parseValue(fiber),
+      source: source || "TACO",
+      sourceCode: code || id
+    };
+  });
+
+// Densidades de referência em g/mL.
+// Não se aplica uma conversão universal de 1 mL = 1 g.
+const DENSITIES = {
+  260: 0.918, // Azeite de oliva
+  268: 0.920, // Óleo de canola
+  270: 0.922, // Óleo de milho
+  272: 0.927, // Óleo de soja
+  471: 1.000, // Café preparado
+  601: 1.030, // Leite integral líquido
+  602: 1.033  // Leite desnatado líquido
+};
 
 function category(food) {
   const name = norm(food.name);
   const group = norm(food.group);
 
-  if (/amendoim|castanha|noz|nozes|amendoa|gergelim|linhaca/.test(name)) {
+  if (/amendoim|castanha|noz|nozes|amendoa|gergelim|linhaca|chia/.test(name)) {
     return "Oleaginosas";
   }
-
-  if (/gorduras e oleos/.test(group)) {
-    return "Gorduras";
-  }
+  if (/gorduras e oleos/.test(group)) return "Gorduras";
 
   if (/frutas/.test(group)) {
     return /suco|refresco/.test(name) ? "Sucos" : "Frutas";
   }
 
-  if (/carnes|pescados|ovos/.test(group)) {
-    return "Proteínas";
-  }
+  if (/carnes|pescados|ovos/.test(group)) return "Proteínas";
 
   if (/leite/.test(group)) {
-    if (/queijo|requeijao/.test(name)) {
-      return "Queijos";
-    }
-
-    if (/po,|em po/.test(name)) {
-      return "Leites em pó";
-    }
-
+    if (/queijo|requeijao/.test(name)) return "Queijos";
+    if (/\bpo\b/.test(name)) return "Leites em pó";
     return "Laticínios";
   }
 
-  if (/leguminosas/.test(group)) {
-    return "Leguminosas";
-  }
+  if (/leguminosas/.test(group)) return "Leguminosas";
 
   if (/verduras/.test(group)) {
     return /batata|mandioca|inhame|cara,|mandioquinha/.test(name)
@@ -1383,15 +1292,8 @@ function category(food) {
 
 function preparationState(food) {
   const name = norm(food.name);
-
-  if (/\bcru[ao]?s?\b/.test(name)) {
-    return "cru";
-  }
-
-  if (/cozid|grelhad|assad|frit|refogad/.test(name)) {
-    return "preparado";
-  }
-
+  if (/\bcru[ao]?s?\b/.test(name)) return "cru";
+  if (/cozid|grelhad|assad|frit|refogad/.test(name)) return "preparado";
   return "outro";
 }
 
@@ -1399,21 +1301,44 @@ FOODS.forEach(food => {
   food.cat = category(food);
   food.search = norm(food.name);
   food.state = preparationState(food);
+  food.density = DENSITIES[food.id] || null;
 });
+
+const foodIds = new Set(FOODS.map(food => food.id));
+const baseValid =
+  foodIds.size === FOODS.length &&
+  Array.from({ length: 602 }, (_, i) => i + 1)
+    .every(id => foodIds.has(id));
+
+// ============================================================
+// BUSCA
+// ============================================================
 
 function searchFoods(query) {
   const terms = norm(query).trim().split(/\s+/);
 
-  return FOODS
-    .filter(food =>
-      terms.every(term => food.search.includes(term))
-    )
-    .sort((a, b) => a.name.localeCompare(b.name, "pt-BR"));
+  return FOODS.filter(food =>
+    terms.every(term => food.search.includes(term))
+  ).sort((a, b) => a.name.localeCompare(b.name, "pt-BR"));
 }
 
 // ============================================================
-// 3. CÁLCULOS NUTRICIONAIS
+// PORÇÕES, MILILITROS E ARREDONDAMENTO
 // ============================================================
+
+function densityAvailable(food) {
+  return !!food && numeric(food.density) && food.density > 0;
+}
+
+function toGrams(food, quantity, unit) {
+  if (unit === "g") return quantity;
+
+  if (unit === "ml" && densityAvailable(food)) {
+    return quantity * food.density;
+  }
+
+  throw new Error("Conversão para mL indisponível.");
+}
 
 function portion(food, grams) {
   return Object.fromEntries(
@@ -1426,17 +1351,16 @@ function portion(food, grams) {
   );
 }
 
-function roundedQuantity(exact, targetCalories, kcalPer100g) {
-  // Usa a menor precisão necessária para erro de até 1%.
+function roundedQuantity(exact, targetCalories, kcalPer100Units) {
   for (const step of [1, 0.5, 0.1]) {
-    const grams = Math.round(exact / step) * step;
-    const calories = grams * kcalPer100g / 100;
+    const quantity = Math.round(exact / step) * step;
+    const calories = quantity * kcalPer100Units / 100;
 
     if (
-      grams > 0 &&
+      quantity > 0 &&
       Math.abs(calories - targetCalories) / targetCalories <= 0.01
     ) {
-      return Math.round(grams * 10) / 10;
+      return Math.round(quantity * 10) / 10;
     }
   }
 
@@ -1444,13 +1368,11 @@ function roundedQuantity(exact, targetCalories, kcalPer100g) {
 }
 
 // ============================================================
-// 4. COMPATIBILIDADE E SIMILARIDADE
+// COMPATIBILIDADE E SIMILARIDADE
 // ============================================================
 
 function compatibility(original, candidate) {
-  if (original.cat === candidate.cat) {
-    return 0;
-  }
+  if (original.cat === candidate.cat) return 0;
 
   const fatCategories = ["Oleaginosas", "Gorduras"];
 
@@ -1469,23 +1391,20 @@ function similarity(originalPortion, candidatePortion) {
   let total = 0;
   let complete = true;
 
-  // Compara macros depois de ajustar as calorias.
   for (const [key, factor] of [["p", 4], ["c", 4], ["f", 9]]) {
-    const original = originalPortion[key];
-    const candidate = candidatePortion[key];
+    const a = originalPortion[key];
+    const b = candidatePortion[key];
 
-    if (numeric(original) && numeric(candidate)) {
-      difference += Math.abs(original - candidate) * factor;
-      total += (original + candidate) * factor;
+    if (numeric(a) && numeric(b)) {
+      difference += Math.abs(a - b) * factor;
+      total += (a + b) * factor;
     } else {
       complete = false;
     }
   }
 
   return {
-    score: total
-      ? Math.max(0, 1 - difference / total)
-      : 0,
+    score: total ? Math.max(0, 1 - difference / total) : 0,
     complete
   };
 }
@@ -1493,10 +1412,7 @@ function similarity(originalPortion, candidatePortion) {
 function substitutions(original, grams, filters = {}) {
   const originalPortion = portion(original, grams);
 
-  if (
-    !numeric(originalPortion.kcal) ||
-    originalPortion.kcal <= 0
-  ) {
+  if (!numeric(originalPortion.kcal) || originalPortion.kcal <= 0) {
     return [];
   }
 
@@ -1509,43 +1425,45 @@ function substitutions(original, grams, filters = {}) {
     .map(food => {
       const tier = compatibility(original, food);
 
-      if (!Number.isFinite(tier)) {
-        return null;
-      }
+      if (!Number.isFinite(tier)) return null;
+      if (filters.same && tier !== 0) return null;
 
-      if (filters.same && tier !== 0) {
-        return null;
-      }
-
-      const exact = originalPortion.kcal * 100 / food.kcal;
-
-      const amount = roundedQuantity(
-        exact,
-        originalPortion.kcal,
-        food.kcal
+      const useMl = densityAvailable(food) && (
+        filters.output === "ml" ||
+        (filters.output === "auto" && filters.inputUnit === "ml")
       );
 
-      if (amount < 1 || amount > 2000) {
-        return null;
-      }
+      const displayUnit = useMl ? "mL" : "g";
+      const factor = useMl ? food.density : 1;
+
+      const exact =
+        originalPortion.kcal * 100 / (food.kcal * factor);
+
+      const displayAmount = roundedQuantity(
+        exact,
+        originalPortion.kcal,
+        food.kcal * factor
+      );
+
+      const amount = displayAmount * factor;
+
+      if (amount < 1 || amount > 2000) return null;
 
       const calculated = portion(food, amount);
       const diff = calculated.kcal - originalPortion.kcal;
 
-      // Só entram no ranking opções com erro calórico de até 2%.
-      if (Math.abs(diff) / originalPortion.kcal > 0.02) {
-        return null;
-      }
+      if (Math.abs(diff) / originalPortion.kcal > 0.02) return null;
 
       return {
         food,
         amount,
+        displayAmount,
+        displayUnit,
         portion: calculated,
         diff,
-        sim: similarity(originalPortion, calculated),
         tier,
-        statePenalty:
-          original.state === food.state ? 0 : 1
+        statePenalty: original.state === food.state ? 0 : 1,
+        sim: similarity(originalPortion, calculated)
       };
     })
     .filter(Boolean)
@@ -1554,9 +1472,7 @@ function substitutions(original, grams, filters = {}) {
         a.tier - b.tier ||
         a.statePenalty - b.statePenalty;
 
-      if (categoryOrder) {
-        return categoryOrder;
-      }
+      if (categoryOrder) return categoryOrder;
 
       const key = {
         protein: "p",
@@ -1573,10 +1489,7 @@ function substitutions(original, grams, filters = {}) {
         }
 
         if (numeric(av) && av !== bv) {
-          const direction =
-            filters.priority === "protein" ? -1 : 1;
-
-          return direction * (av - bv);
+          return (filters.priority === "protein" ? -1 : 1) * (av - bv);
         }
       }
 
@@ -1589,32 +1502,13 @@ function substitutions(original, grams, filters = {}) {
 }
 
 // ============================================================
-// 5. RENDERIZAÇÃO
+// RENDERIZAÇÃO
 // ============================================================
 
-function escapeHTML(value) {
-  return String(value).replace(/[&<>"']/g, character => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;"
-  }[character]));
-}
-
 function nutrient(value) {
-  if (numeric(value)) {
-    return fmt(value) + " g";
-  }
-
-  if (value === "Tr") {
-    return "Tr";
-  }
-
-  if (value === "NA") {
-    return "NA";
-  }
-
+  if (numeric(value)) return fmt(value) + " g";
+  if (value === "Tr") return "Tr";
+  if (value === "NA") return "NA";
   return "—";
 }
 
@@ -1626,21 +1520,18 @@ function stats(values) {
     ["fiber", "Fibras"]
   ];
 
-  return `
-    <div class="stats">
-      ${fields.map(([key, label]) => `
-        <div>
-          <b>${nutrient(values[key])}</b>
-          <span>${label}</span>
-        </div>
-      `).join("")}
-    </div>
-  `;
+  return '<div class="stats">' +
+    fields.map(([key, label]) =>
+      `<div><b>${nutrient(values[key])}</b><span>${label}</span></div>`
+    ).join("") +
+    "</div>";
 }
 
 let selected = null;
 let active = null;
 let activeAmount = 0;
+let activeInputUnit = "g";
+let activeInputQuantity = 0;
 let visible = 5;
 let items = [];
 
@@ -1649,15 +1540,38 @@ function closeChoices() {
   $("search").setAttribute("aria-expanded", "false");
 }
 
+function refreshUnit() {
+  const valid = densityAvailable(selected);
+
+  $("unit").options[1].disabled = !valid;
+  if (!valid) $("unit").value = "g";
+
+  let hint = "De 1 a 2.000 g · peso da parte comestível.";
+
+  if (valid) {
+    hint = $("unit").value === "ml"
+      ? "Densidade de referência: " +
+        fmt(selected.density, 3) +
+        " g/mL. 200 mL ≈ " +
+        fmt(200 * selected.density) +
+        " g. Limite de 2.000 g após conversão."
+      : "Você também pode usar mL neste alimento.";
+  } else {
+    hint += " mL indisponível: sem densidade cadastrada.";
+  }
+
+  $("quantityHint").textContent = hint;
+}
+
 function choose(food) {
   selected = food;
-
   $("search").value = food.name;
   $("selection").textContent =
-    food.cat + " · TACO #" + food.id;
+    food.cat + " · " + food.source + " · " + food.sourceCode;
 
   $("error").textContent = "";
   closeChoices();
+  refreshUnit();
 }
 
 function similarityLabel(result) {
@@ -1665,7 +1579,6 @@ function similarityLabel(result) {
   if (result.sim.score > 0.9) return "Excelente";
   if (result.sim.score > 0.75) return "Muito boa";
   if (result.sim.score > 0.55) return "Boa";
-
   return "Razoável";
 }
 
@@ -1676,7 +1589,9 @@ function update() {
 
   items = substitutions(active, activeAmount, {
     same: $("category").value === "same",
-    priority: $("priority").value
+    priority: $("priority").value,
+    output: $("resultUnit").value,
+    inputUnit: activeInputUnit
   });
 
   render();
@@ -1690,86 +1605,119 @@ function render() {
   if (!items.length) {
     $("results").innerHTML = `
       <div class="empty">
-        Não encontramos uma substituição compatível dentro
-        dos limites de porção e calorias.
-        Tente outra quantidade ou categoria.
+        Não encontramos uma substituição compatível dentro dos
+        limites de porção e calorias. Tente outra quantidade ou categoria.
       </div>
     `;
-
     $("more").hidden = true;
     return;
   }
 
   const targetCalories = portion(active, activeAmount).kcal;
 
-  $("results").innerHTML = items
-    .slice(0, visible)
-    .map(result => {
-      const label = similarityLabel(result);
-      const sign = result.diff >= 0 ? "+" : "−";
-      const percent =
-        Math.abs(result.diff) / targetCalories * 100;
+  $("results").innerHTML = items.slice(0, visible).map(result => {
+    const label = similarityLabel(result);
+    const sign = result.diff >= 0 ? "+" : "−";
+    const percent = Math.abs(result.diff) / targetCalories * 100;
 
-      return `
-        <article class="card">
-          <div class="cardtop">
-            <div class="eyebrow">
-              ${escapeHTML(result.food.cat)}
-            </div>
+    return `
+      <article class="card">
+        <div class="cardtop">
+          <div class="eyebrow">${esc(result.food.cat)}</div>
+          <span class="badge">${label}</span>
+        </div>
 
-            <span class="badge">${label}</span>
-          </div>
+        <h3>${esc(result.food.name)}</h3>
 
-          <h3>${escapeHTML(result.food.name)}</h3>
+        <p class="hint">
+          Fonte: ${esc(result.food.source)}
+          · ${esc(result.food.sourceCode)}
+        </p>
 
-          <div>
-            <span class="grams">
-              ${fmt(result.amount)} g
-            </span>
+        <div>
+          <span class="grams">
+            ${fmt(result.displayAmount)} ${result.displayUnit}
+          </span>
+          <span class="energy">
+            · ≈ ${fmt(result.portion.kcal)} kcal
+          </span>
+        </div>
 
-            <span class="energy">
-              · ≈ ${fmt(result.portion.kcal)} kcal
-            </span>
-          </div>
+        ${
+          result.displayUnit === "mL"
+            ? `<p class="hint">
+                ≈ ${fmt(result.amount)} g ·
+                conversão estimada pela densidade cadastrada.
+               </p>`
+            : ""
+        }
 
-          ${stats(result.portion)}
+        ${stats(result.portion)}
 
-          <div class="diff">
-            Diferença calórica:
-            ${sign}${fmt(Math.abs(result.diff))} kcal
-            (${fmt(percent)}%)
-          </div>
+        <div class="diff">
+          Diferença calórica:
+          ${sign}${fmt(Math.abs(result.diff))} kcal
+          (${fmt(percent)}%)
+        </div>
 
-          <p class="hint">
-            Similaridade nutricional: ${label}
-            ${
-              result.statePenalty
-                ? " · Confira o estado de preparo."
-                : ""
-            }
-          </p>
-        </article>
-      `;
-    })
-    .join("");
+        <p class="hint">
+          Similaridade nutricional: ${label}
+          ${result.statePenalty ? " · Confira o estado de preparo." : ""}
+        </p>
+      </article>
+    `;
+  }).join("");
 
   $("more").hidden = visible >= items.length;
 }
 
 // ============================================================
-// 6. EVENTOS E VALIDAÇÃO
+// VALIDAÇÃO E INTERAÇÕES
 // ============================================================
+
+function validateInput(food, raw, unit) {
+  if (!food) return "Selecione um alimento nos resultados da busca.";
+
+  if (!/^\d+(?:[.,]\d+)?$/.test(raw)) {
+    return "Informe uma quantidade numérica válida.";
+  }
+
+  const quantity = Number(raw.replace(",", "."));
+
+  if (!Number.isFinite(quantity) || quantity <= 0 || quantity > 2000) {
+    return "Informe uma quantidade maior que zero e de até 2.000.";
+  }
+
+  if (unit === "ml" && !densityAvailable(food)) {
+    return "Este alimento não tem conversão cadastrada para mL.";
+  }
+
+  const grams = toGrams(food, quantity, unit);
+
+  if (grams < 1 || grams > 2000) {
+    return "A porção deve corresponder a entre 1 e 2.000 gramas.";
+  }
+
+  if (!numeric(food.kcal) || food.kcal <= 0) {
+    return "Este registro não possui energia válida. " +
+      "Para leite líquido, escolha uma opção UHT da TBCA.";
+  }
+
+  return "";
+}
+
+$("unit").addEventListener("change", refreshUnit);
 
 $("search").addEventListener("input", () => {
   selected = null;
+  refreshUnit();
 
   if (!baseValid) {
     closeChoices();
     return;
   }
 
-  $("selection").textContent =
-    "Selecione uma opção da lista.";
+  $("selection").textContent = "Selecione uma opção da lista.";
 
   const query = $("search").value.trim();
   const matches = query ? searchFoods(query) : [];
@@ -1784,24 +1732,19 @@ $("search").addEventListener("input", () => {
 
   for (const food of matches.slice(0, 60)) {
     const button = document.createElement("button");
-
     button.type = "button";
     button.textContent = food.name;
-
     button.addEventListener("click", () => choose(food));
     box.append(button);
   }
 
   if (!matches.length) {
     const paragraph = document.createElement("p");
-
     paragraph.className = "hint";
     paragraph.style.padding = "12px";
-
     paragraph.textContent =
-      "Nenhum alimento encontrado na TACO. Tente outro nome; " +
-      "nem todo produto ou marca está na tabela.";
-
+      "Nenhum alimento encontrado. Tente outro nome; " +
+      "nem todo produto ou marca está na base.";
     box.append(paragraph);
   }
 
@@ -1812,37 +1755,23 @@ $("search").addEventListener("input", () => {
 $("search").addEventListener("keydown", event => {
   if (event.key === "ArrowDown") {
     const first = $("choices").querySelector("button");
-
     if (first) first.focus();
-
     event.preventDefault();
   }
 
-  if (event.key === "Escape") {
-    closeChoices();
-  }
+  if (event.key === "Escape") closeChoices();
 });
 
 $("choices").addEventListener("keydown", event => {
-  const buttons = [
-    ...$("choices").querySelectorAll("button")
-  ];
-
+  const buttons = [...$("choices").querySelectorAll("button")];
   const index = buttons.indexOf(document.activeElement);
 
   if (
     buttons.length &&
-    (
-      event.key === "ArrowDown" ||
-      event.key === "ArrowUp"
-    )
+    (event.key === "ArrowDown" || event.key === "ArrowUp")
   ) {
-    const direction =
-      event.key === "ArrowDown" ? 1 : -1;
-
-    const next =
-      (index + direction + buttons.length) % buttons.length;
-
+    const direction = event.key === "ArrowDown" ? 1 : -1;
+    const next = (index + direction + buttons.length) % buttons.length;
     buttons[next].focus();
     event.preventDefault();
   }
@@ -1867,58 +1796,34 @@ $("form").addEventListener("submit", event => {
 
   if (!baseValid) {
     $("error").textContent =
-      "A lista dos 597 alimentos ainda não foi inserida corretamente.";
+      "A base está incompleta. Confira se o código foi copiado inteiro.";
     return;
   }
 
   const raw = $("quantity").value.trim();
-
-  const grams = /^\d+(?:[.,]\d+)?$/.test(raw)
-    ? Number(raw.replace(",", "."))
-    : NaN;
-
-  let error = "";
-
-  if (!selected) {
-    error =
-      "Selecione um alimento nos resultados da busca.";
-  } else if (
-    !Number.isFinite(grams) ||
-    grams < 1 ||
-    grams > 2000
-  ) {
-    error =
-      "Informe uma quantidade entre 1 e 2.000 gramas.";
-  } else if (
-    !numeric(selected.kcal) ||
-    selected.kcal <= 0
-  ) {
-    error =
-      "Este alimento não possui energia válida para equivalência " +
-      "calórica na base utilizada. Escolha outro.";
-  }
+  const unit = $("unit").value;
+  const error = validateInput(selected, raw, unit);
 
   $("error").textContent = error;
-
   if (error) return;
 
   active = selected;
-  activeAmount = grams;
+  activeInputQuantity = Number(raw.replace(",", "."));
+  activeInputUnit = unit;
+  activeAmount = toGrams(active, activeInputQuantity, unit);
 
-  const values = portion(active, grams);
+  const values = portion(active, activeAmount);
 
   $("original").hidden = false;
-
   $("original").innerHTML = `
     <div class="eyebrow">Você deseja substituir</div>
-
-    <h3>${escapeHTML(active.name)}</h3>
-
+    <h3>${esc(active.name)}</h3>
+    <p class="hint">${esc(active.source)} · ${esc(active.sourceCode)}</p>
     <p>
-      ${fmt(grams)} g ·
-      <span class="kcal">${fmt(values.kcal)}</span> kcal
+      ${fmt(activeInputQuantity)} ${unit === "ml" ? "mL" : "g"}
+      ${unit === "ml" ? `(≈ ${fmt(activeAmount)} g)` : ""}
+      · <span class="kcal">${fmt(values.kcal)}</span> kcal
     </p>
-
     ${stats(values)}
   `;
 
@@ -1933,10 +1838,80 @@ $("more").addEventListener("click", () => {
 
 $("category").addEventListener("change", update);
 $("priority").addEventListener("change", update);
+$("resultUnit").addEventListener("change", update);
+
+// ============================================================
+// TEMA CLARO / ESCURO
+// ============================================================
+
+const themeMedia = window.matchMedia
+  ? window.matchMedia("(prefers-color-scheme: dark)")
+  : null;
+
+let manualTheme = null;
+
+try {
+  manualTheme = localStorage.getItem("scherk-theme");
+} catch (e) {}
+
+function applyTheme(theme) {
+  const dark = theme === "dark";
+
+  document.documentElement.dataset.theme = theme;
+
+  $("themeToggle").innerHTML =
+    (dark ? "☀" : "☾") +
+    '<span class="theme-label"> ' +
+    (dark ? "Tema claro" : "Tema escuro") +
+    "</span>";
+
+  $("themeToggle").setAttribute(
+    "aria-label",
+    dark ? "Ativar tema claro" : "Ativar tema escuro"
+  );
+
+  $("themeToggle").setAttribute("aria-pressed", String(dark));
+}
+
+applyTheme(document.documentElement.dataset.theme || "light");
+
+$("themeToggle").addEventListener("click", () => {
+  manualTheme = document.documentElement.dataset.theme === "dark"
+    ? "light"
+    : "dark";
+
+  applyTheme(manualTheme);
+
+  try {
+    localStorage.setItem("scherk-theme", manualTheme);
+  } catch (e) {}
+});
+
+if (themeMedia && themeMedia.addEventListener) {
+  themeMedia.addEventListener("change", event => {
+    if (manualTheme !== "dark" && manualTheme !== "light") {
+      applyTheme(event.matches ? "dark" : "light");
+    }
+  });
+}
+
+// Mostra o nome da consultoria caso a imagem não seja encontrada.
+function logoFallback() {
+  $("brand").innerHTML =
+    '<div class="brand-fallback">SCHERK<small>CONSULTORIA</small></div>';
+}
+
+$("logo").addEventListener("error", logoFallback);
+
+if ($("logo").complete && $("logo").naturalWidth === 0) {
+  logoFallback();
+}
+
+refreshUnit();
 
 if (!baseValid) {
   $("error").textContent =
-    "Insira a lista completa dos 597 alimentos no bloco food-data.";
+    "A base está incompleta. Confira se o código foi copiado inteiro.";
 }
 </script>
 </body>
