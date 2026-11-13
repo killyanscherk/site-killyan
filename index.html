@@ -2,158 +2,161 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Killyan Scherk - Links</title>
-    <!-- Google Fonts: Inter (para corpo) e Playfair Display (para título) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101010">
+    <meta name="description" content="Consultoria, suplementos e canal de Killyan Scherk.">
+    <title>Killyan Scherk | Links</title>
+    <link rel="icon" type="image/png" sizes="64x64" href="/links-assets/favicon.png">
     <style>
         :root {
-            --cor-principal: #FFAE00; /* Laranja/Dourado Vibrante */
-            --cor-fundo: #111111;
-            --cor-container: #1A1A1A;
-            --cor-borda: #2d2d2d;
-            --cor-texto: #EAEAEA;
-            --cor-texto-secundario: #888888;
+            color-scheme: dark;
+            --background: #101010;
+            --surface: #191919;
+            --text: #f5f3ee;
+            --muted: #b8b6b0;
+            --line: #373530;
+            --yellow: #ffc700;
         }
+
+        *, *::before, *::after { box-sizing: border-box; }
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--cor-fundo);
-            color: var(--cor-texto);
-            /* Adiciona uma textura de ruído sutil ao fundo */
-            background-image: url('data:image/svg+xml,%3Csvg width="6" height="6" viewBox="0 0 6 6" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%232d2d2d" fill-opacity="0.4" fill-rule="evenodd"%3E%3Cpath d="M5 0h1L0 6V5zM6 5v1H5z"/%3E%3C/g%3E%3C/svg%3E');
+            margin: 0;
+            color: var(--text);
+            background: var(--background);
+            font: 400 1rem/1.45 "Helvetica Neue", Helvetica, Arial, sans-serif;
         }
-        .font-title {
-            font-family: 'Playfair Display', serif;
-        }
-        .btn {
-            border: 2px solid var(--cor-principal);
-            background-color: var(--cor-principal);
-            color: #111; /* Texto escuro para contraste no laranja */
-            transition: all 0.3s ease-in-out;
-        }
-        .btn:hover {
-            border-color: var(--cor-borda);
-            background-color: rgba(26, 26, 26, 0.5); /* Fundo escuro semi-transparente */
-            color: var(--cor-texto); /* Texto claro ao passar o rato */
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 174, 0, 0.1);
-        }
-        .btn svg {
-            stroke: #111; /* Cor do ícone no estado normal */
-            transition: stroke 0.3s ease-in-out;
-        }
-        .btn:hover svg {
-            stroke: var(--cor-texto); /* Cor do ícone ao passar o rato */
+        h1, p { margin: 0; }
+        a { color: inherit; text-decoration: none; }
+        a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
+        main {
+            width: min(1050px, 100% - 80px);
+            min-height: 100vh;
+            min-height: 100svh;
+            margin-inline: auto;
+            display: grid;
+            grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+            align-content: center;
+            align-items: center;
+            gap: clamp(2rem, 7vw, 5.5rem);
+            padding-block: clamp(2rem, 7vh, 5rem);
         }
 
-        /* Estilo Botão YouTube */
-        .btn-youtube {
-            background-color: #CC0000; /* YouTube Red (escuro) */
-            border-color: #CC0000;
-            color: #FFFFFF; /* White text */
+        .profile { padding-block: 1rem; }
+        .portrait {
+            display: block;
+            width: clamp(112px, 16vw, 164px);
+            height: auto;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 1px solid var(--line);
+            margin-bottom: 1.35rem;
         }
-        .btn-youtube:hover {
-            box-shadow: 0 10px 20px rgba(204, 0, 0, 0.2);
+        h1 {
+            font-size: clamp(3rem, 5.3vw, 5.5rem);
+            line-height: .95;
+            font-weight: 700;
+            letter-spacing: -.068em;
         }
-        .btn-youtube svg {
-            stroke: #FFFFFF;
-        }
+        h1 span { display: block; }
+        .profile p { margin-top: .85rem; color: var(--muted); }
+        .profile .handle { margin-top: .4rem; color: var(--yellow); font-weight: 700; }
 
-        /* Animações de entrada */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .links { display: grid; gap: 9px; list-style: none; padding: 0; margin: 0; }
+        .link {
+            min-height: 66px;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 1rem;
+            padding: .8rem 1rem;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 9px;
+            transition: background .16s, border-color .16s;
         }
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in {
-            animation: fadeIn 1s ease-out forwards;
-        }
-        .animate-slide-up {
-            animation: slideUp 0.8s ease-out forwards;
-        }
-        /* Atraso nas animações para um efeito escalonado */
-        .delay-1 { animation-delay: 0.2s; }
-        .delay-2 { animation-delay: 0.4s; }
-        .delay-3 { animation-delay: 0.6s; }
-        .delay-4 { animation-delay: 0.8s; }
-        .delay-5 { animation-delay: 1.0s; }
-        .delay-6 { animation-delay: 1.2s; }
-        .delay-7 { animation-delay: 1.4s; }
+        .link:hover { background: #24221b; border-color: var(--yellow); }
+        .link strong { display: block; font-size: 1.02rem; line-height: 1.25; }
+        .link small { display: block; margin-top: .22rem; color: var(--muted); font-size: .85rem; }
+        .arrow { color: var(--yellow); font-size: 1.25rem; line-height: 1; }
+        .link.primary { background: var(--yellow); border-color: var(--yellow); color: #141005; }
+        .link.primary:hover { background: #ffdb52; border-color: #ffdb52; }
+        .primary small, .primary .arrow { color: inherit; }
+        .coupon { color: var(--yellow); font-weight: 700; }
 
+        footer {
+            margin-top: 1.2rem;
+            border-top: 1px solid var(--line);
+            padding-top: .65rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: .1rem 1rem;
+            font-size: .86rem;
+            color: var(--muted);
+        }
+        footer a { display: inline-flex; align-items: center; min-height: 44px; gap: .35rem; }
+        footer a:hover { color: var(--yellow); text-decoration: underline; text-underline-offset: .2em; }
+        .media-kit { color: var(--yellow); font-weight: 700; }
+
+        @media (max-width: 700px) {
+            main { width: min(480px, 100% - 36px); min-height: auto; grid-template-columns: 1fr; gap: 1.6rem; }
+            .profile { text-align: center; padding: 0; }
+            .portrait { width: 94px; margin: 0 auto .85rem; }
+            h1 { font-size: clamp(2.35rem, 8vw, 3.7rem); letter-spacing: -.058em; }
+            h1 span { display: inline; }
+            .profile p { margin-top: .5rem; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .link { transition: none; }
+        }
     </style>
 </head>
-<body class="flex items-center justify-center min-h-screen">
+<body>
+    <main>
+        <header class="profile">
+            <img class="portrait" src="/links-assets/perfil.jpg" width="480" height="480" alt="Foto de perfil de Killyan Scherk" fetchpriority="high">
+            <h1><span>Killyan</span> <span>Scherk</span></h1>
+            <p>Atleta e criador de conteúdo fitness</p>
+            <p class="handle">@killyanss</p>
+        </header>
 
-    <div class="container mx-auto p-4 flex justify-center">
-        <main class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-            
-            <!-- Coluna da Esquerda: Perfil -->
-            <div class="text-center md:text-right p-4">
-                <!-- Foto de Perfil -->
-                <img src="Foto de perfil1.JPEG" alt="Foto de Killyan Scherk" class="w-36 h-36 mx-auto md:mr-0 md:ml-auto rounded-full mb-5 border-4 border-[var(--cor-borda)] animate-fade-in shadow-lg object-cover">
+        <div>
+            <nav aria-label="Links de Killyan Scherk">
+                <ul class="links">
+                    <li>
+                        <a class="link primary" href="https://forms.gle/HmbNpQNCStp9dCFG9">
+                            <span><strong>Consultoria comigo</strong><small>(lista de espera)</small></span>
+                            <span class="arrow" aria-hidden="true">↗</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="link" href="https://docs.google.com/document/d/15MtBe-vhyfo_fk7Q--4Fxvum4FTevNWfiXPBAMH4Kb0/edit?usp=sharing">
+                            <span><strong>Suplementos que eu uso</strong><small>(PDF Gratuito)</small></span>
+                            <span class="arrow" aria-hidden="true">↗</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="link" href="https://www.youtube.com/@killyanss" target="_blank" rel="noopener noreferrer">
+                            <strong>Meu canal no YouTube</strong>
+                            <span class="arrow" aria-hidden="true">↗</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="link" href="https://www.maxtitanium.com.br/" target="_blank" rel="noopener noreferrer">
+                            <span><strong>Max Titanium</strong><small>Suplementos com Desconto com <span class="coupon">Cupom: "Ki"</span></small></span>
+                            <span class="arrow" aria-hidden="true">↗</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
 
-                <!-- Nome de Usuário -->
-                <h1 class="font-title text-5xl font-bold text-white tracking-wide animate-slide-up opacity-0 delay-1">@killyanss</h1>
-                <p class="text-[var(--cor-texto-secundario)] mt-2 animate-slide-up opacity-0 delay-2">Atleta & Criador de Conteúdo Fitness</p>
-
-                <!-- Ícones de Redes Sociais -->
-                <div class="flex justify-center md:justify-end space-x-5 mt-6 animate-slide-up opacity-0 delay-3 items-center">
-                    <a href="https://www.instagram.com/killyanss" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-gray-500 hover:text-[var(--cor-principal)] transition-all duration-300 hover:scale-110">
-                        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.585.069-4.85c.149-3.225 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163m0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98C15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg>
-                    </a>
-                    <a href="https://www.youtube.com/@killyanss" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="text-gray-500 hover:text-[var(--cor-principal)] transition-all duration-300 hover:scale-110">
-                        <svg class="w-9 h-9" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21.582,6.186c-0.23-0.854-0.906-1.531-1.76-1.76C18.25,4,12,4,12,4S5.75,4,4.178,4.426 c-0.854,0.23-1.531,0.906-1.76,1.76C2,7.758,2,12,2,12s0,4.242,0.418,5.814c0.23,0.854,0.906,1.531,1.76,1.76 C5.75,20,12,20,12,20s6.25,0,7.822-0.426c0.854-0.23,1.531-0.906,1.76-1.76C22,16.242,22,12,22,12S22,7.758,21.582,6.186z M10,15.464V8.536L16,12L10,15.464z"/></svg>
-                    </a>
-                    <a href="https://www.tiktok.com/@killyanss" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="text-gray-500 hover:text-[var(--cor-principal)] transition-all duration-300 hover:scale-110">
-                        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><path d="M12.525.02C13.835.01 15.135 0 16.435.02c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-2.17.04-4.36-.6-5.9-2.31-1.74-1.9-2.42-4.37-2.11-6.69.21-1.51.86-2.92 1.89-4.07 1.03-1.14 2.38-1.96 3.91-2.35.22-.05.46-.06.69-.06 1.11.02 2.22.02 3.33.02V10.4c-1.13-.01-2.25-.01-3.38-.02-1.25-.01-2.45.38-3.17 1.43-.78 1.13-.79 2.78-.02 3.91.75 1.1 2.02 1.63 3.38 1.63 1.34 0 2.6-.52 3.36-1.62.75-1.09.75-2.67 0-3.76-.75-1.11-2.02-1.64-3.38-1.64V4.65z"/></svg>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Coluna da Direita: Links -->
-            <div class="w-full">
-                <div class="space-y-4">
-                    <a href="https://www.youtube.com/@killyanss" target="_blank" rel="noopener noreferrer" class="btn btn-youtube opacity-0 animate-slide-up delay-2 flex items-center w-full text-left p-4 rounded-lg">
-                        <span class="font-semibold tracking-wide flex-1">Meu canal favorito do YouTube</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
-                    </a>
-                    <a href="https://forms.gle/HmbNpQNCStp9dCFG9" class="btn opacity-0 animate-slide-up delay-3 flex items-center w-full text-left p-4 rounded-lg">
-                        <span class="font-semibold tracking-wide flex-1">Consultoria (Lista de espera)</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
-                    </a>
-                    <a href="https://docs.google.com/document/d/15MtBe-vhyfo_fk7Q--4Fxvum4FTevNWfiXPBAMH4Kb0/edit?usp=sharing" class="btn opacity-0 animate-slide-up delay-4 flex items-center w-full text-left p-4 rounded-lg">
-                        <span class="font-semibold tracking-wide flex-1">Melhores suplementos que eu uso (PDF Gratuito)</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
-                    </a>
-                    <a href="https://www.maxtitanium.com.br/" target="_blank" rel="noopener noreferrer" class="btn opacity-0 animate-slide-up delay-5 flex items-center w-full text-left p-4 rounded-lg">
-                        <span class="font-semibold tracking-wide flex-1">Max Titanium - Suplementos com Desconto no Cupom: "ki"</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
-                    </a>
-                    <a href="https://comunicacao.cbmfcursos.com/vip?slug=killyanss" class="btn opacity-0 animate-slide-up delay-6 flex items-center w-full text-left p-4 rounded-lg">
-                        <span class="font-bold tracking-wide flex-1">CBMF - Curso para Treinador Esportivo</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
-                    </a>
-                </div>
-
-                <!-- Footer -->
-                <footer class="mt-8 text-center md:text-left">
-                    <p class="text-xs text-[var(--cor-texto-secundario)]">
-                        <a href="mediakit" class="font-bold text-[var(--cor-principal)] hover:underline">Media Kit 2025</a>
-                    </p>
-                    <p class="text-xs text-[var(--cor-texto-secundario)] mt-1">Parcerias: <a href="mailto:contato@killyan.com.br" class="hover:text-[var(--cor-principal)]">contato@killyan.com.br</a></p>
-                </footer>
-            </div>
-        </main>
-    </div>
-
+            <footer>
+                <a class="media-kit" href="/mediakit/">Media Kit 2027 <span aria-hidden="true">↗</span></a>
+                <a href="mailto:contatokillyan@gmail.com">contatokillyan@gmail.com</a>
+            </footer>
+        </div>
+    </main>
 </body>
 </html>
-
-
