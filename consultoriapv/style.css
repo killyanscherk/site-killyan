@@ -250,12 +250,12 @@ p + p { margin-top: 16px; }
 }
 .result-sign::before {
   inset: 50% 0 auto;
-  border-top: .075em solid currentColor;
+  border-top: .12em solid currentColor;
   transform: translateY(-50%);
 }
 .result-sign-plus::after {
   inset: 0 auto 0 50%;
-  border-left: .075em solid currentColor;
+  border-left: .12em solid currentColor;
   transform: translateX(-50%);
 }
 .result-change.result-loss { border-color: #e9c3bb; background: #fae3df; color: #702e29; }
