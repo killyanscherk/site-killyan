@@ -18,7 +18,7 @@
   track.append(...copies);
 
   const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const delay = 4800;
+  const delay = 3000;
   let playing = !motion.matches;
   let visible = false;
   let timer;
