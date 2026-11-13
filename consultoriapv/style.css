@@ -265,6 +265,7 @@ p + p { margin-top: 16px; }
 @media (max-width: 560px) {
   .proof .wrap { width: calc(100% - 28px); }
   .result-grid { --results-per-view: 1; --result-gap: 10px; }
+  .result-change { padding-block: 3px 6px; line-height: 1; text-indent: 0; }
 }
 
 .plans-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
