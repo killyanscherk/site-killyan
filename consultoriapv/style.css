@@ -198,7 +198,10 @@ p + p { margin-top: 16px; }
 .result-comparison { width: 100%; height: auto; border-radius: 7px; background: #e7e3d8; }
 .result-details { padding: 11px 6px 9px; text-align: center; }
 .result-change {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: .17em;
+  white-space: nowrap;
   padding: 5px 10px;
   border: 1px solid #c1d9b9;
   border-radius: 6px;
@@ -207,6 +210,30 @@ p + p { margin-top: 16px; }
   font-size: clamp(24px, 3vw, 32px);
   letter-spacing: -.045em;
   line-height: 1.12;
+}
+.result-sign {
+  position: relative;
+  flex: 0 0 .49em;
+  height: .49em;
+}
+.result-sign span {
+  position: absolute;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.result-sign::before, .result-sign-plus::after {
+  content: "";
+  position: absolute;
+}
+.result-sign::before {
+  inset: 50% 0 auto;
+  border-top: .075em solid currentColor;
+  transform: translateY(-50%);
+}
+.result-sign-plus::after {
+  inset: 0 auto 0 50%;
+  border-left: .075em solid currentColor;
+  transform: translateX(-50%);
 }
 .result-change.result-loss { border-color: #e9c3bb; background: #fae3df; color: #702e29; }
 .result-details p { margin-top: 5px; font-size: .88rem; line-height: 1.25; }
