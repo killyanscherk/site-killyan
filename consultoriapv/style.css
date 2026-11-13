@@ -158,24 +158,77 @@ p + p { margin-top: 16px; }
 .deliverables .bonus { background: #f2e7c4; }
 .deliverables .bonus .eyebrow { margin-bottom: 11px; }
 
-.proof { background: #eeece5; }
+.proof {
+  background: #eeece5;
+  padding-block: clamp(46px, 6vw, 78px);
+}
+.proof .wrap { width: min(100% - var(--gutter) * 2, 878px); }
+.proof .section-heading { margin-bottom: clamp(23px, 3.3vw, 38px); }
+.proof h2 { max-width: 24ch; font-size: clamp(34px, 4.6vw, 55px); }
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+.result-card {
+  width: 100%;
+  max-width: 320px;
+  min-width: 0;
+  justify-self: center;
+  padding: 7px;
+  border: 1px solid #d8d3c6;
+  border-radius: 13px;
+  background: var(--paper);
+  box-shadow: 0 4px 12px #2220150c;
+}
+.result-comparison { position: relative; overflow: hidden; border-radius: 7px; background: #e7e3d8; }
+.result-comparison img { width: 100%; height: auto; }
+.result-comparison::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: #fff9;
+  pointer-events: none;
+}
+.result-comparison figcaption {
+  position: absolute;
+  inset: auto 0 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  padding: 15px 0 7px;
+  background: linear-gradient(transparent, #10100fbc);
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 750;
+  line-height: 1.2;
+}
+.result-details { display: flex; justify-content: space-between; align-items: center; gap: 7px; padding: 11px 5px 6px; }
+.result-details h3 { font-size: .92rem; letter-spacing: .01em; }
+.result-details p { margin-top: 3px; font-size: .76rem; line-height: 1.2; }
+.result-change {
+  flex: none;
+  padding: 5px 8px;
+  border: 1px solid #e4cf8d;
+  border-radius: 5px;
+  background: #faedbd;
+  color: #211b0c;
+  font-size: clamp(19px, 2.45vw, 27px);
+  letter-spacing: -.06em;
+  line-height: 1.12;
+}
+@media (max-width: 760px) {
+  .result-grid { max-width: 654px; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-inline: auto; }
+  .result-card:last-child:nth-child(odd) { grid-column: 1 / -1; max-width: min(320px, calc((100% - 14px) / 2)); }
+}
+@media (max-width: 530px) {
+  .result-grid { grid-template-columns: 1fr; }
+  .result-card:last-child:nth-child(odd) { grid-column: auto; max-width: 320px; }
+}
+
 .plans-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-.result-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-.result-card { min-width: 0; padding: 12px; border: 1px solid #d8d3c6; border-radius: 12px; background: #f7f6f2; }
-.result-photos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px; overflow: hidden; border-radius: 7px; background: #e7e3d8; }
-.result-photos figure { display: grid; grid-template-rows: auto 1fr; }
-.result-photos img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
-.result-photos figcaption { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0 7px; padding: 6px 8px; font-size: .72rem; color: #f7f6f2; background: #22211c; }
-.result-photos figcaption span { color: #d8d3c6; }
-.result-details { padding: 13px 3px 5px; }
-.result-details h3 { font-size: .9rem; letter-spacing: .025em; }
-.proof .result-change { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; margin-top: 6px; line-height: 1.1; }
-.result-change strong { color: #1b1a16; font-size: clamp(28px, 3.25vw, 43px); letter-spacing: -.05em; }
-.result-change span { font-size: .9rem; }
-.proof .result-dates, .proof .proof-note { margin-top: 9px; font-size: .78rem; }
-.proof .proof-note { margin-top: 17px; }
-@media (max-width: 900px) { .result-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 570px) { .result-grid { grid-template-columns: 1fr; } }
 
 .pricing-intro { align-items: end; margin-bottom: clamp(34px, 6vw, 65px); grid-template-columns: 1.08fr .92fr; }
 .comparison { padding: 18px 21px; border: 1px solid #3e392a; border-radius: 9px; background: #1a1914; }
