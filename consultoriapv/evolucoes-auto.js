@@ -4,6 +4,19 @@
   if (!track || !toggle || !("IntersectionObserver" in window)) return;
 
   const cards = [...track.querySelectorAll(".result-card")];
+  if (cards.length < 2) return;
+
+  // Repeat the cards so the end of one lap and the start of the next share the same track.
+  const copies = cards.map(card => {
+    const copy = card.cloneNode(true);
+    copy.removeAttribute("aria-labelledby");
+    copy.setAttribute("aria-hidden", "true");
+    copy.inert = true;
+    for (const element of copy.querySelectorAll("[id]")) element.removeAttribute("id");
+    return copy;
+  });
+  track.append(...copies);
+
   const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const delay = 4800;
   let playing = !motion.matches;
@@ -11,7 +24,7 @@
   let timer;
   let hovering = false;
   let touching = false;
-  let direction = 1;
+  let settleTimer;
 
   function schedule() {
     clearTimeout(timer);
@@ -19,19 +32,29 @@
     timer = setTimeout(advance, delay);
   }
 
+  function lapWidth() {
+    return copies[0].getBoundingClientRect().left - cards[0].getBoundingClientRect().left;
+  }
+
+  function wrap() {
+    const width = lapWidth();
+    if (width > 0 && track.scrollLeft >= width - 1) {
+      track.scrollTo({ left: Math.max(0, track.scrollLeft - width), behavior: "instant" });
+    }
+  }
+
+  function settle() {
+    clearTimeout(settleTimer);
+    if (!touching) settleTimer = setTimeout(wrap, 160);
+  }
+
   function advance() {
+    wrap();
     const current = track.scrollLeft;
-    const end = track.scrollWidth - track.clientWidth;
-    if (end <= 1) return;
-
-    if (current >= end - 2) direction = -1;
-    if (current <= 2) direction = 1;
-
-    const origin = cards[0].offsetLeft;
-    const stops = cards.map(card => Math.min(end, card.offsetLeft - origin));
-    const next = direction === 1
-      ? stops.find(stop => stop > current + 2)
-      : stops.reverse().find(stop => stop < current - 2);
+    const origin = cards[0].getBoundingClientRect().left;
+    const next = [...cards, copies[0]]
+      .map(card => card.getBoundingClientRect().left - origin)
+      .find(stop => stop > current + 2);
 
     if (next !== undefined) {
       track.scrollTo({ left: next, behavior: motion.matches ? "instant" : "smooth" });
@@ -49,9 +72,13 @@
   setPlaying(playing);
   toggle.addEventListener("click", () => setPlaying(!playing));
   motion.addEventListener("change", () => setPlaying(!motion.matches));
-  for (const event of ["focusin", "focusout", "wheel", "scroll"]) {
+  for (const event of ["focusin", "focusout", "wheel"]) {
     track.addEventListener(event, schedule, { passive: true });
   }
+  track.addEventListener("scroll", () => {
+    settle();
+    schedule();
+  }, { passive: true });
   track.addEventListener("pointerenter", event => {
     if (event.pointerType === "mouse") {
       hovering = true;
@@ -64,12 +91,14 @@
   });
   track.addEventListener("pointerdown", () => {
     touching = true;
+    settle();
     schedule();
   });
   for (const event of ["pointerup", "pointercancel"]) {
     window.addEventListener(event, () => {
       if (!touching) return;
       touching = false;
+      settle();
       schedule();
     }, { passive: true });
   }
