@@ -1,14 +1,302 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4FM77V8TT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-Y4FM77V8TT', {
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false
+    });
+
+    document.addEventListener('click', function (event) {
+      const link = event.target.closest('a[href^="https://wa.me/"], a[href^="https://api.whatsapp.com/"]');
+      if (link) {
+        gtag('event', 'whatsapp_click');
+      }
+    });
+  </script>
   <meta charset="utf-8">
-  <meta http-equiv="refresh"
-        content="0; url=https://forms.gle/HmbNpQNCStp9dCFG9">
-  <title>Consultoria Scherk</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10100f">
+  <meta name="description" content="Treino e alimentação individualizados com Killyan Scherk e nutricionista. Musculação na academia ou calistenia em casa, com acompanhamento pelo WhatsApp.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Scherk Consultoria | Treino e dieta online">
+  <meta property="og:description" content="Treino e alimentação feitos para sua rotina, com Killyan Scherk e nutricionista.">
+  <meta property="og:image" content="https://killyan.com.br/consultoria/assets/palco.jpg">
+  <meta property="og:image:alt" content="Killyan Scherk no palco, levantando seu troféu">
+  <meta property="og:url" content="https://killyan.com.br/consultoria/">
+  <link rel="canonical" href="https://killyan.com.br/consultoria/">
+  <link rel="icon" type="image/png" sizes="96x96" href="./assets/favicon.png">
+  <link rel="stylesheet" href="./style.css?v=badge-mobile">
+  <title>Scherk Consultoria | Treino e dieta online</title>
 </head>
-<body>
-  <a href="https://forms.gle/HmbNpQNCStp9dCFG9">
-    Abrir formulário da consultoria
-  </a>
+<body id="inicio">
+  <a class="skip" href="#conteudo">Ir para o conteúdo</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#inicio" aria-label="Scherk Consultoria, início">
+        <img src="./assets/scherk.png" width="380" height="134" alt="Scherk Consultoria">
+      </a>
+      <nav aria-label="Navegação principal">
+        <a class="nav-method" href="#como-funciona">Como funciona</a>
+        <a class="nav-faq" href="#duvidas">Dúvidas</a>
+        <a class="header-cta" href="#planos">Ver planos <svg class="arrow-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4.5 13.5l9-9m-7 0h7v7"/></svg></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero" aria-labelledby="headline">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Treino e dieta online</p>
+          <h1 id="headline">Seu melhor shape começa com um <em>plano seu.</em></h1>
+          <p class="intro">Treino e alimentação feitos para sua rotina, com acompanhamento do campeão mundial de fisiculturismo natural Killyan Scherk e de um nutricionista da equipe.</p>
+          <div class="hero-actions">
+            <a class="button" href="#planos">Quero começar <svg class="arrow-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4.5 13.5l9-9m-7 0h7v7"/></svg></a>
+            <a class="text-link" href="#como-funciona">Como funciona <svg class="arrow-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 3.5v11m-4.5-4.5L9 14.5l4.5-4.5"/></svg></a>
+          </div>
+          <p class="hero-note">Musculação na academia <span aria-hidden="true">·</span> Calistenia em casa</p>
+        </div>
+        <div class="hero-visual">
+          <img src="./assets/killyan.png" width="433" height="820" alt="Killyan Scherk" fetchpriority="high">
+          <div class="hero-credit"><strong>Killyan Scherk</strong><span>Campeão mundial natural · Jr.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section proof" id="depoimentos" aria-labelledby="depoimentos-title">
+      <div class="wrap">
+        <div class="result-header">
+          <div class="section-heading">
+            <p class="eyebrow">Depoimentos</p>
+            <h2 id="depoimentos-title">Resultados de quem treina com a gente.</h2>
+            <p>Passe para o lado para ver mais</p>
+          </div>
+          <button class="result-autoplay" type="button" aria-controls="lista-evolucoes" hidden>Pausar animação</button>
+        </div>
+        <div class="result-grid" id="lista-evolucoes" tabindex="0" role="region" aria-label="Comparativos de evolução">
+          <article class="result-card" aria-labelledby="case-04">
+            <img class="result-comparison" src="./assets/evolucoes/evolucao-04.jpg" width="720" height="428" loading="lazy" alt="Evolução física. Foto inicial à esquerda e final à direita.">
+            <div class="result-details">
+              <h3 class="result-change" id="case-04"><span class="result-sign result-sign-plus"><span>+</span></span><span>4,2 kg</span></h3>
+              <p>Objetivo: Ganho de massa muscular</p>
+              <p>Musculação</p>
+            </div>
+          </article>
+          <article class="result-card" aria-labelledby="case-gm">
+            <img class="result-comparison" src="./assets/evolucoes/evolucao-03.jpg?v=desfoque-2" width="720" height="428" loading="lazy" alt="Evolução física. Foto inicial à esquerda e final à direita.">
+            <div class="result-details">
+              <h3 class="result-change" id="case-gm"><span class="result-sign result-sign-plus"><span>+</span></span><span>7,6 kg</span></h3>
+              <p>Objetivo: Ganho de massa muscular</p>
+              <p>Calistenia</p>
+            </div>
+          </article>
+          <article class="result-card" aria-labelledby="case-06">
+            <img class="result-comparison" src="./assets/evolucoes/evolucao-06.jpg?v=desfoque-2" width="720" height="428" loading="lazy" alt="Evolução física. Foto inicial à esquerda e final à direita.">
+            <div class="result-details">
+              <h3 class="result-change result-loss" id="case-06"><span class="result-sign"><span>−</span></span><span>6 kg</span></h3>
+              <p>Objetivo: Emagrecimento</p>
+              <p>Musculação</p>
+            </div>
+          </article>
+          <article class="result-card" aria-labelledby="case-gr">
+            <img class="result-comparison" src="./assets/evolucoes/evolucao-02.jpg" width="720" height="428" loading="lazy" alt="Evolução física. Foto inicial à esquerda e final à direita.">
+            <div class="result-details">
+              <h3 class="result-change result-loss" id="case-gr"><span class="result-sign"><span>−</span></span><span>4,0 kg</span></h3>
+              <p>Objetivo: Emagrecimento</p>
+              <p>Musculação</p>
+            </div>
+          </article>
+          <article class="result-card" aria-labelledby="case-ls">
+            <img class="result-comparison" src="./assets/evolucoes/evolucao-01.jpg?v=desfoque-2" width="720" height="428" loading="lazy" alt="Evolução física. Foto inicial à esquerda e final à direita.">
+            <div class="result-details">
+              <h3 class="result-change" id="case-ls"><span class="result-sign result-sign-plus"><span>+</span></span><span>6,2 kg</span></h3>
+              <p>Objetivo: Ganho de massa muscular</p>
+              <p>Musculação</p>
+            </div>
+          </article>
+          <article class="result-card" aria-labelledby="case-05">
+            <img class="result-comparison" src="./assets/evolucoes/evolucao-05.jpg" width="720" height="428" loading="lazy" alt="Evolução física. Foto inicial à esquerda e final à direita.">
+            <div class="result-details">
+              <h3 class="result-change" id="case-05"><span class="result-sign result-sign-plus"><span>+</span></span><span>3,1 kg</span></h3>
+              <p>Objetivo: Ganho de massa muscular</p>
+              <p>Musculação</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section video-section" aria-labelledby="video-title">
+      <div class="wrap video-grid">
+        <div>
+          <p class="eyebrow">Por dentro da consultoria</p>
+          <h2 id="video-title">Da avaliação ao seu primeiro treino.</h2>
+          <p>Veja como a gente transforma sua rotina, suas preferências e seus objetivos em um plano de treino e alimentação.</p>
+        </div>
+        <!-- Quando o vídeo estiver pronto, substitua o conteúdo deste quadro pelo player. -->
+        <div class="video-frame">
+          <div class="video-status">
+            <span class="play-mark" aria-hidden="true">▶</span>
+            <strong>Vídeo de apresentação</strong>
+            <span>Em breve</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section paper" id="como-funciona" aria-labelledby="metodo-title">
+      <div class="wrap method-grid">
+        <div>
+          <p class="eyebrow">Como funciona</p>
+          <h2 id="metodo-title">Do primeiro papo aos próximos resultados.</h2>
+          <p>Você pode fazer musculação na academia ou treinar calistenia em casa, inclusive sem equipamentos. O plano parte do que você tem à disposição hoje.</p>
+        </div>
+        <ol class="steps">
+          <li><span aria-hidden="true">01</span><div><h3>Avaliação inicial</h3><p>Você preenche uma avaliação para a gente entender seu histórico, sua rotina, suas preferências e o que quer alcançar.</p></div></li>
+          <li><span aria-hidden="true">02</span><div><h3>Chamada inicial por vídeo</h3><p>Disponível nos planos trimestral e semestral. Depois da avaliação, você conversa diretamente com Killyan e com o nutricionista da equipe para alinhar objetivos e tirar dúvidas.</p></div></li>
+          <li><span aria-hidden="true">03</span><div><h3>Treino e dieta individualizados</h3><p>A gente monta um plano de treino e um plano alimentar 100% individualizados, levando em conta seu nível, seus horários e onde você treina.</p></div></li>
+          <li><span aria-hidden="true">04</span><div><h3>Suporte diário pelo WhatsApp</h3><p>Mande suas dúvidas e vídeos dos exercícios para receber orientações e corrigir a execução.</p></div></li>
+          <li><span aria-hidden="true">05</span><div><h3>Reavaliações e ajustes</h3><p>A gente acompanha seu progresso toda semana e revisa o planejamento mensalmente, com ajustes conforme sua evolução.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section dark about" id="sobre" aria-labelledby="sobre-title">
+      <div class="wrap about-grid">
+        <figure class="stage">
+          <img src="./assets/palco.jpg" width="933" height="1400" loading="lazy" alt="Killyan Scherk no palco de uma competição, levantando o troféu">
+        </figure>
+        <div>
+          <p class="eyebrow">Quem está por trás da consultoria</p>
+          <h2 id="sobre-title">Killyan Scherk</h2>
+          <p class="about-lead">Campeão mundial de fisiculturismo natural Jr.</p>
+          <p>Comecei no YouTube ensinando calistenia e levei essa experiência para o fisiculturismo natural. Conquistei cinco títulos, entre eles o brasileiro e o mundial no Natural Olympia de 2024, em Las Vegas.</p>
+          <p>Hoje, estou me formando em Educação Física e aplico o que aprendi no treino e nas competições para te ajudar a progredir no seu ritmo, na academia ou em casa.</p>
+          <div class="about-stats">
+            <div><strong>5</strong><span>títulos de campeão</span></div>
+            <div><strong>2024</strong><span>Natural Olympia · Jr.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section paper" id="entregaveis" aria-labelledby="entregaveis-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <p class="eyebrow">O que você recebe</p>
+          <h2 id="entregaveis-title">Tudo para treinar com direção.</h2>
+        </div>
+        <ul class="deliverables">
+          <li><h3>Treino periodizado</h3><p>100% individualizado, com progressão adequada ao seu nível e ao local onde você treina.</p></li>
+          <li><h3>Plano alimentar flexível</h3><p>Calculado pelo nutricionista de acordo com seus objetivos e suas preferências.</p></li>
+          <li><h3>WhatsApp direto com a equipe</h3><p>Suporte diário para dúvidas sobre treino, alimentação e como colocar o plano em prática.</p></li>
+          <li><h3>Reavaliações frequentes</h3><p>Acompanhamento semanal e revisões mensais, com ajustes no treino e na dieta conforme necessário.</p></li>
+          <li><h3>Correção de execução em vídeo</h3><p>Envie vídeos dos seus exercícios e receba orientações para melhorar a técnica.</p></li>
+          <li class="bonus"><p class="eyebrow">Bônus em preparação</p><h3>Aulas exclusivas para alunos</h3><p>Aulas sobre treino, alimentação e execução dos exercícios.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section pricing dark" id="planos" aria-labelledby="planos-title">
+      <div class="wrap">
+        <div class="pricing-intro">
+          <div>
+            <p class="eyebrow">Planos da consultoria</p>
+            <h2 id="planos-title">Treino e nutrição em um só plano.</h2>
+            <p>Você tem orientação de treino com Killyan e acompanhamento alimentar com nutricionista pelo preço de um só plano. Todos incluem suporte pelo WhatsApp, reavaliações e correção por vídeo.</p>
+          </div>
+          <aside class="comparison" aria-label="Referências de preço">
+            <p>Referências de mercado</p>
+            <dl>
+              <div><dt>Consulta com nutricionista esportivo</dt><dd>~R$ 400</dd></div>
+              <div><dt>Consulta com treinador esportivo</dt><dd>~R$ 400</dd></div>
+            </dl>
+            <div><strong>Você vai ter os dois pela metade do preço de um.</strong></div>
+            <small>Comparação com o valor do plano trimestral. Valores das consultas aproximados.</small>
+          </aside>
+        </div>
+
+        <div class="plans-grid">
+          <article class="plan">
+            <h3>Mensal</h3>
+            <p class="plan-length">1 mês de acompanhamento</p>
+            <p class="price"><span>R$</span> <strong>250</strong> <span>/ mês</span></p>
+            <p class="plan-total">R$ 250 no total</p>
+            <ul><li>Treino e dieta individualizados</li><li>Suporte, reavaliações e correção por vídeo</li></ul>
+            <a class="button outline" href="https://go.primecoaching.com.br/c/wVnPZG1evV">Comprar plano mensal <svg class="arrow-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4.5 13.5l9-9m-7 0h7v7"/></svg></a>
+          </article>
+          <article class="plan featured">
+            <p class="recommendation">Melhor custo-benefício para evoluir</p>
+            <h3>Trimestral</h3>
+            <p class="plan-length">3 meses de acompanhamento</p>
+            <p class="price"><span>R$</span> <strong>197</strong> <span>/ mês</span></p>
+            <p class="plan-total">R$ 591 no total</p>
+            <ul><li>Treino e dieta com acompanhamento</li><li>Chamada inicial por vídeo</li><li>Plano de ação de 3 meses</li><li>Garantia condicional de 90 dias</li><li>Aulas exclusivas quando lançadas</li></ul>
+            <a class="button" href="https://go.primecoaching.com.br/c/YQxXdR7nVB">Comprar plano trimestral <svg class="arrow-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4.5 13.5l9-9m-7 0h7v7"/></svg></a>
+          </article>
+          <article class="plan">
+            <h3>Semestral</h3>
+            <p class="plan-length">6 meses de acompanhamento</p>
+            <p class="price"><span>R$</span> <strong>187</strong> <span>/ mês</span></p>
+            <p class="plan-total">R$ 1.122 no total</p>
+            <ul><li>Treino e dieta com acompanhamento</li><li>Chamada inicial por vídeo</li><li>Plano de ação de 6 meses</li><li>Garantia condicional de 180 dias</li></ul>
+            <a class="button outline" href="https://go.primecoaching.com.br/c/SA1alhJWyy">Comprar plano semestral <svg class="arrow-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4.5 13.5l9-9m-7 0h7v7"/></svg></a>
+          </article>
+        </div>
+        <p class="pricing-note"><a href="#garantia">Confira as condições da garantia.</a></p>
+      </div>
+    </section>
+
+    <section class="guarantee" id="garantia" aria-labelledby="garantia-title">
+      <div class="wrap guarantee-grid">
+        <div>
+          <p class="eyebrow">Garantia condicional</p>
+          <h2 id="garantia-title">Seu investimento protegido.</h2>
+        </div>
+        <div>
+          <p>Nos planos trimestral e semestral, se você seguir o plano, mantiver contato com a equipe e, ao fim do prazo de garantia, ainda assim não tiver resultados visíveis e mensuráveis, devolvemos <strong>100% do seu investimento.</strong></p>
+          <p class="guarantee-period"><strong>90 dias</strong> no trimestral <span aria-hidden="true">·</span> <strong>180 dias</strong> no semestral</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section paper" id="duvidas" aria-labelledby="faq-title">
+      <div class="wrap faq-grid">
+        <div>
+          <p class="eyebrow">Perguntas frequentes</p>
+          <h2 id="faq-title">Tire suas dúvidas.</h2>
+        </div>
+        <div class="faq-list">
+          <details><summary>A consultoria serve para iniciantes?</summary><p>Sim. A avaliação inicial ajuda a gente a montar um plano adequado ao seu nível e ao tempo que você tem para treinar. Você pode mandar vídeos para receber orientações de execução.</p></details>
+          <details><summary>Preciso de uma academia completa?</summary><p>Você pode treinar na academia ou fazer calistenia em casa, inclusive sem equipamentos. A gente adapta os exercícios ao espaço e aos recursos que você tem.</p></details>
+          <details><summary>Como funciona o suporte pelo WhatsApp?</summary><p>Durante o acompanhamento, você tem contato diário com a equipe para tirar dúvidas, enviar vídeos dos exercícios e compartilhar como está indo com o treino e a alimentação.</p></details>
+          <details><summary>E se eu não me adaptar à dieta?</summary><p>Fale com o nutricionista pelo WhatsApp. Ele pode orientar substituições e ajustar o plano para suas preferências, seus horários e seus objetivos.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact dark" aria-labelledby="contact-title">
+      <div class="wrap contact-grid">
+        <div>
+          <h2 id="contact-title">Quer conversar com a equipe?</h2>
+          <p>Chame a gente no WhatsApp se tiver dúvidas sobre os planos ou o acompanhamento.</p>
+        </div>
+        <a class="button" href="https://wa.me/5511912862648?text=Ol%C3%A1%21%20Vi%20a%20p%C3%A1gina%20da%20Scherk%20Consultoria%20e%20tenho%20uma%20d%C3%BAvida." target="_blank" rel="noopener">Falar no WhatsApp <svg class="arrow-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4.5 13.5l9-9m-7 0h7v7"/></svg></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <a class="brand" href="#inicio" aria-label="Scherk Consultoria, voltar ao início"><img src="./assets/scherk.png" width="380" height="134" loading="lazy" alt="Scherk Consultoria"></a>
+      <a href="https://www.instagram.com/killyanss/">@killyanss <svg class="arrow-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4.5 13.5l9-9m-7 0h7v7"/></svg></a>
+    </div>
+  </footer>
+  <script src="./evolucoes-auto.js?v=loop-1500ms" defer></script>
 </body>
 </html>
