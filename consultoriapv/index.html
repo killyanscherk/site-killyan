@@ -1,6 +1,23 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4FM77V8TT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-Y4FM77V8TT', {
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false
+    });
+
+    document.addEventListener('click', function (event) {
+      const link = event.target.closest('a[href^="https://wa.me/"], a[href^="https://api.whatsapp.com/"]');
+      if (link) {
+        gtag('event', 'whatsapp_click');
+      }
+    });
+  </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#10100f">
